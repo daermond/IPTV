@@ -43,13 +43,13 @@ jobs:
           arguments=(--update-state)
           if [[ "$REFRESH_EPG" == "true" ]]; then arguments+=(--refresh-epg); fi
           npm run build -- "${arguments[@]}"
-      - name: Record source changes
+      - name: Commit playlists and source changes
         run: |
-          git add -- state channel-changes.log
+          git add -A -- playlists state channel-changes.log
           if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Update IPTV source state'
+          git commit -m 'Update IPTV playlists and source state'
           git push origin HEAD:main
       - uses: actions/upload-pages-artifact@v4
         with:

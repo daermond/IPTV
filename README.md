@@ -1,6 +1,6 @@
 # IPTV
 
-Magyar IPTV-listák szerkesztése és frissítése GitHubon. A [webszerkesztő](https://daermond.github.io/IPTV/) projektjei a `projects/` mappában vannak. Az alapértelmezett lista az [Otthon M3U](https://daermond.github.io/IPTV/playlists/otthon.m3u).
+Magyar IPTV-listák szerkesztése és frissítése GitHubon. A [webszerkesztő](https://daermond.github.io/IPTV/) projektjei a `projects/` mappában vannak. Az alapértelmezett lista az [Otthon M3U](https://daermond.github.io/IPTV/playlists/otthon.m3u). A kész listák másolata a repó [playlists mappájában](https://github.com/daermond/IPTV/tree/main/playlists) is elérhető.
 
 1. Nyisd meg a szerkesztőt, válassz projektet, vagy hozz létre újat.
 2. A csatornaszámot és a csoportot közvetlenül a sorban módosíthatod. Az **EPG** oszlopban a **Párosítás** gomb a sor alatt nyitja meg a hozzárendelést. A csatorna nevére kattintva a neve, logója és elsődleges streamje is szerkeszthető. Az **Aktív** jelölővel kapcsolhatod ki. Kézi sorrendben húzd a sort a fogantyúval, vagy használd a fel és le nyilat.
@@ -21,6 +21,7 @@ A projektfájlok és az elkészült listák nyilvánosak. Forrásként HTTPS-cí
 - További M3U-forrásokat a `sources.json` fájlban lehet felvenni, majd a projektben kiválasztani. Azonos teljes `tvg-id` esetén a streamek egy csatornához kerülnek. A feedváltozatok külön maradnak. A különböző azonosítók kézi összekapcsolásához a projektfájl opcionális `aliases` mezője használható, például `"aliases": { "id:AlternateATV.hu": "id:ATV.hu@SD" }`.
 - A [változásnapló](https://github.com/daermond/IPTV/blob/main/channel-changes.log) csak a forrásonként hozzáadott és eltávolított csatornákat rögzíti. Az első sikeres beolvasás a kiinduló állapot. Üres vagy hibás forrás esetén az előző kiadás marad elérhető.
 - A publikálás projektmentéskor, kézi indítással és naponta kétszer fut. A GitHub a nyilvános repók ütemezését 60 nap aktivitáshiány után letilthatja. Ilyenkor az Actions felületén kapcsolható vissza.
+- Az Actions a repó `playlists/` mappáját is frissíti. A fájlokat a szerkesztőben vagy a projektfájlban módosítsd, mert ez a mappa a generálás kimenete. A GitHub Pages címei továbbra is közvetlenül használhatók a lejátszókban.
 
 ## Helyi fejlesztés
 

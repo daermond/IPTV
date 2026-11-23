@@ -1,4 +1,4 @@
-import { access, cp, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { access, cp, mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
@@ -123,6 +123,20 @@ async function writeIfChanged(filename, data) {
   if (previous !== data) await writeFile(filename, data, 'utf8');
 }
 
+async function updateRepoPlaylists(playlists) {
+  const directory = path('playlists');
+  await mkdir(directory, { recursive: true });
+  for (const [filename, content] of playlists) {
+    await writeIfChanged(join(directory, filename), content);
+  }
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    if (entry.isFile() && entry.name.endsWith('.m3u') && ID.test(entry.name.slice(0, -4))
+      && !playlists.has(entry.name)) {
+      await unlink(join(directory, entry.name));
+    }
+  }
+}
+
 export async function build({ updateState = false, refreshEpg = false } = {}) {
   const sources = await readJson(path('sources.json'));
   if (!sourceList(sources.m3u) || !sourceList(sources.epg)) throw new Error('Érvénytelen forráslista.');
@@ -186,8 +200,12 @@ export async function build({ updateState = false, refreshEpg = false } = {}) {
 
   await Promise.all(['data', 'playlists'].map(dir => mkdir(path('dist', dir), { recursive: true })));
   for (const file of await readdir(path('web'))) await cp(path('web', file), path('dist', file));
+  const playlists = new Map();
   for (const { id, project, epgSources } of projects) {
-    await writeFile(path('dist', 'playlists', `${id}.m3u`), renderPlaylist(project, catalog, logos, epgSources));
+    const filename = `${id}.m3u`;
+    const content = renderPlaylist(project, catalog, logos, epgSources);
+    playlists.set(filename, content);
+    await writeFile(path('dist', 'playlists', filename), content);
   }
   const manifest = {
     repo: process.env.GITHUB_REPOSITORY ?? 'daermond/IPTV',
@@ -197,6 +215,7 @@ export async function build({ updateState = false, refreshEpg = false } = {}) {
   };
   await writeFile(path('dist', 'data', 'catalog.json'), JSON.stringify(manifest));
   if (updateState) {
+    await updateRepoPlaylists(playlists);
     await mkdir(path('state'), { recursive: true });
     await writeIfChanged(stateFile, json(state));
     await writeIfChanged(epgFile, json(epg));
