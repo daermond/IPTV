@@ -1,0 +1,1057 @@
+{
+  "version": 1,
+  "name": "HUN_IPTV",
+  "sources": [
+    "iptv-org-hu"
+  ],
+  "epgSources": [
+    "epgshare-hu"
+  ],
+  "sort": "manual",
+  "streamMode": "primary",
+  "groups": [
+    "Általános",
+    "Sport",
+    "Ismeretterjesztő",
+    "Film",
+    "Életmód",
+    "Gyerek",
+    "Hírek",
+    "Zene",
+    "Helyi TV"
+  ],
+  "order": [
+    "id:M1.hu@HD",
+    "id:M2.hu@SD",
+    "id:Duna.hu@SD",
+    "id:DunaWorld.hu@SD",
+    "id:RTL.hu@SD",
+    "id:TV2.hu@SD",
+    "id:Viasat3.hu@SD",
+    "id:Viasat6.hu@SD",
+    "id:Viasat2.hu@SD",
+    "id:Galaxy4.hu@SD",
+    "id:TV4.hu@SD",
+    "id:FEM3.hu@SD",
+    "id:RTLGold.hu@SD",
+    "id:RTLHarom.hu@SD",
+    "id:RTLKetto.hu@SD",
+    "id:SuperTV2.hu@SD",
+    "id:TV2Comedy.hu@SD",
+    "id:M5.hu@SD",
+    "id:M4Sport.hu@SD",
+    "id:Arena4.hu@SD",
+    "id:Match4.hu@SD",
+    "id:Sport1.hu@SD",
+    "id:Sport2.hu@SD",
+    "id:Spiler1.hu@SD",
+    "id:Spiler2.hu@SD",
+    "id:Loversenykozvetites.hu@SD",
+    "id:Spektrum.hu@SD",
+    "id:NationalGeographic.hu@SD",
+    "id:NationalGeographicWild.hu@SD",
+    "id:DiscoveryChannel.hu@SD",
+    "id:ViasatHistory.hu@SD",
+    "id:ViasatNature.hu@SD",
+    "id:ViasatExplore.hu@SD",
+    "id:History.hu@SD",
+    "id:AnimalPlanet.hu@SD",
+    "id:OzoneTV.hu@SD",
+    "id:InvestigationDiscovery.hu@SD",
+    "id:MoziPlus.hu@SD",
+    "id:FilmPlus.hu@SD",
+    "id:Film4.hu@SD",
+    "id:MAX4.hu@SD",
+    "id:Prime.hu@SD",
+    "id:AXNCrime.us@SD",
+    "id:AXNSpin.hu@SD",
+    "id:Cinemax2CentralEurope.hu@SD",
+    "id:CinemaxCentralEurope.hu@SD",
+    "id:FilmMania.hu@SD",
+    "id:Moziklub.hu@SD",
+    "id:Moziverzum.hu@SD",
+    "id:FilmCafe.hu@Hungary",
+    "id:MagyarMoziTV.hu@SD",
+    "id:ATVSpirit.hu@SD",
+    "id:SorozatPlus.hu@SD",
+    "id:Sorozatklub.hu@SD",
+    "id:Story4.hu@SD",
+    "id:Story4.hu@Czechia",
+    "id:AXNSpin.hu@Poland",
+    "id:FilmCafe.hu@Romania",
+    "id:JockyTV.hu@SD",
+    "id:IzauraTV.hu@SD",
+    "id:TVPaprika.hu@SD",
+    "id:TV2Sef.hu@SD",
+    "id:FoodNetwork.hu@SD",
+    "id:TravelChannel.hu@SD",
+    "id:RTLOtthon.hu@SD",
+    "id:SpektrumHome.hu@SD",
+    "id:TLC.hu@SD",
+    "id:HGTV.hu@SD",
+    "id:LifeTV.hu@SD",
+    "id:TheFishingHuntingChannel.hu@SD",
+    "id:TheFishingHuntingChannel.hu@HD",
+    "id:DisneyChannel.hu@SD",
+    "id:Nickelodeon.hu@SD",
+    "id:NickJr.hu@SD",
+    "id:Minimax.hu@SD",
+    "id:TV2Kids.hu@SD",
+    "id:JimJam.hu@SD",
+    "id:Kolyokklub.hu@SD",
+    "id:Nicktoons.hu@SD",
+    "id:ATV.hu@SD",
+    "id:HtMusicChannel.hu@SD",
+    "id:OxygenMusic.hu@HD",
+    "id:SlagerTV.hu@SD",
+    "id:Zenebutik.hu@SD",
+    "id:MuzsikaTV.hu@SD",
+    "id:DikhTV.hu@SD",
+    "id:16tvBudapest.hu@SD",
+    "id:AlfoldTV.hu@SD",
+    "id:ApostolTV.hu@SD",
+    "id:BTV.hu@SD",
+    "id:BajaiTV.hu@SD",
+    "id:BalatonTV.hu@SD",
+    "id:BerenteTV.hu@SD",
+    "id:BudapestEuropaTelevizio.hu@SD",
+    "id:CityTV.hu@SD",
+    "id:CsurgoTV.hu@SD",
+    "id:DaruTV.hu@SD",
+    "id:DSTV.hu@SD",
+    "id:DTV.hu@SD",
+    "id:EgykerTV.hu@SD",
+    "id:ESTV.hu@SD",
+    "id:EWTNBonumTV.hu@SD",
+    "id:FehervarTV.hu@SD",
+    "id:FIXTV.hu@SD",
+    "id:GloboTV.hu@SD",
+    "id:GolyaTV.hu@SD",
+    "id:GranTV.hu@SD",
+    "id:GyongyosiTV.hu@SD",
+    "id:HalomTV.hu@SD",
+    "id:HangulatTV.hu@SD",
+    "id:HegyvidekTV.hu@SD",
+    "id:HeviziTV.hu@SD",
+    "id:JaszsagiTersegiTV.hu@SD",
+    "id:KanizsaTV.hu@SD",
+    "id:KaposTV.hu@SD",
+    "id:KarcagTV.hu@SD",
+    "id:KecskemetiTV.hu@SD",
+    "id:KiskorosTV.hu@SD",
+    "id:KomaromiTelevizio.hu@SD",
+    "id:KomlosTV.hu@SD",
+    "id:LiceumTV.hu@SD",
+    "id:MakoiVarosiTelevizio.hu@SD",
+    "id:MezokovesdiTelevizio.hu@SD",
+    "id:MoraNetTV.hu@SD",
+    "id:OroszlanyiVarosiTelevizio.hu@SD",
+    "id:OrszaggyulesOGYplenaris.hu@SD",
+    "id:OrszaggyulesOGYTAB.hu@SD",
+    "id:OzdiVarosiTV.hu@SD",
+    "id:PannonTV.rs@SD",
+    "id:PilisTV.hu@SD",
+    "id:PVTV.hu@SD",
+    "id:RakosmenteTV.hu@SD",
+    "id:RegioPluszTV.hu@SD",
+    "id:SIXOTV.hu@SD",
+    "id:SoltvadkertiTelevizio.hu@SD",
+    "id:SzecsenyTV.hu@SD",
+    "id:SzolnokTV.hu@SD",
+    "id:TataiTV.hu@SD",
+    "id:TelePaks.hu@SD",
+    "id:TiszaTV.hu@SD",
+    "id:TrimedioTV.hu@SD",
+    "id:7TV.hu@SD",
+    "id:TVBudakalasz.hu@SD",
+    "id:TVEger.hu@SD",
+    "id:TVKeszthely.hu@SD",
+    "id:TVSzentendre.hu@SD",
+    "id:VasarhelyiTelevizio.hu@SD",
+    "id:VolgyhidTV.hu@SD",
+    "id:VTVFuzesabony.hu@SD",
+    "id:VTVMor.hu@SD",
+    "id:WilliamsTV.hu@SD",
+    "id:XVTV.hu@SD",
+    "id:ZalaegerszegiTV.hu@SD",
+    "id:ZugloTV.hu@SD"
+  ],
+  "channels": {
+    "id:16tvBudapest.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:AlfoldTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:AnimalPlanet.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Animal.Planet.HD.hu"
+      }
+    },
+    "id:ApostolTV.hu@SD": {
+      "group": "Helyi TV",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Apostol.TV.hu"
+      },
+      "enabled": false
+    },
+    "id:Arena4.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Aréna4.hu"
+      }
+    },
+    "id:ATV.hu@SD": {
+      "group": "Hírek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "ATV.hu"
+      },
+      "name": "ATV"
+    },
+    "id:ATVSpirit.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "ATV.SPIRIT.hu"
+      },
+      "name": "ATV Spirit"
+    },
+    "id:AXNCrime.us@SD": {
+      "group": "Film"
+    },
+    "id:AXNSpin.hu@SD": {
+      "group": "Film"
+    },
+    "id:AXNSpin.hu@Poland": {
+      "enabled": false,
+      "group": "Film"
+    },
+    "id:BTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:BajaiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:BalatonTV.hu@SD": {
+      "group": "Helyi TV",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Balaton.TV.hu"
+      },
+      "enabled": false
+    },
+    "id:BerenteTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:BudapestEuropaTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Cinemax2CentralEurope.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Cinemax.2.hu"
+      },
+      "name": "Cinemax 2"
+    },
+    "id:CinemaxCentralEurope.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Cinemax.hu"
+      },
+      "name": "Cinemax"
+    },
+    "id:CityTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:CsurgoTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:DaruTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:DikhTV.hu@SD": {
+      "group": "Zene",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Dikh.TV.hu"
+      }
+    },
+    "id:DiscoveryChannel.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Discovery.Channel.hu"
+      }
+    },
+    "id:DisneyChannel.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Disney.Channel.hu"
+      }
+    },
+    "id:DSTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:DTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Duna.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Duna.TV.hu"
+      }
+    },
+    "id:DunaWorld.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Duna.World.hu"
+      }
+    },
+    "id:EgykerTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:ESTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:EWTNBonumTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:FehervarTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:FEM3.hu@SD": {
+      "group": "Általános"
+    },
+    "id:Film4.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Film4.hu"
+      }
+    },
+    "id:FilmCafe.hu@Hungary": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Film.Café.hu"
+      }
+    },
+    "id:FilmCafe.hu@Romania": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Film.Café.hu"
+      },
+      "enabled": false
+    },
+    "id:FilmMania.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Film.Mánia.hu"
+      }
+    },
+    "id:FilmPlus.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Film+.hu"
+      }
+    },
+    "id:FIXTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:FoodNetwork.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Food.Network.hu"
+      }
+    },
+    "id:Galaxy4.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Galaxy4.hu"
+      }
+    },
+    "id:GloboTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:GolyaTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:GranTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:GyongyosiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:HtMusicChannel.hu@SD": {
+      "group": "Zene",
+      "name": "H!T Music Channel"
+    },
+    "id:HalomTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:HangulatTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:HegyvidekTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:HeviziTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:HGTV.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "HGTV.hu"
+      }
+    },
+    "id:History.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "History.Channel.hu"
+      }
+    },
+    "id:InvestigationDiscovery.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "ID:.Investigation.Discovery.hu"
+      }
+    },
+    "id:IzauraTV.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Izaura.TV.hu"
+      },
+      "name": "Izaura TV"
+    },
+    "id:JaszsagiTersegiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:JimJam.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "JimJam.hu"
+      }
+    },
+    "id:JockyTV.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Jocky.TV.hu"
+      }
+    },
+    "id:KanizsaTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:KaposTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:KarcagTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:KecskemetiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:KiskorosTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Kolyokklub.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Kölyökklub.hu"
+      }
+    },
+    "id:KomaromiTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:KomlosTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:LiceumTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:LifeTV.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "LifeTv.hu"
+      }
+    },
+    "id:Loversenykozvetites.hu@SD": {
+      "group": "Sport",
+      "enabled": false
+    },
+    "id:M1.hu@HD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "m1.HD.hu"
+      },
+      "name": "M1"
+    },
+    "id:M2.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "m2.HD.hu"
+      },
+      "name": "M2"
+    },
+    "id:M4Sport.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "m4.hu"
+      },
+      "name": "M4 Sport"
+    },
+    "id:M5.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "m5.hu"
+      },
+      "name": "M5"
+    },
+    "id:MagyarMoziTV.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Magyar.Mozi.TV.hu"
+      }
+    },
+    "id:MakoiVarosiTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Match4.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Match.4.hu"
+      },
+      "name": "Match4"
+    },
+    "id:MAX4.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Max4.hu"
+      },
+      "name": "MAX4"
+    },
+    "id:MezokovesdiTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Minimax.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Minimax.hu"
+      }
+    },
+    "id:MoraNetTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:MoziPlus.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Mozi+.hu"
+      }
+    },
+    "id:Moziklub.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Moziklub.hu"
+      }
+    },
+    "id:Moziverzum.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Moziverzum.hu"
+      }
+    },
+    "id:MuzsikaTV.hu@SD": {
+      "group": "Zene",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Muzsika.TV.hu"
+      }
+    },
+    "id:NationalGeographic.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "National.Geographic.hu"
+      }
+    },
+    "id:NationalGeographicWild.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "National.Geographic.Wild.hu"
+      }
+    },
+    "id:NickJr.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Nick.Jr..hu"
+      }
+    },
+    "id:Nickelodeon.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Nickelodeon.hu"
+      }
+    },
+    "id:Nicktoons.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Nicktoons.hu"
+      }
+    },
+    "id:OroszlanyiVarosiTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:OrszaggyulesOGYplenaris.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:OrszaggyulesOGYTAB.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:OxygenMusic.hu@HD": {
+      "group": "Zene",
+      "name": "Oxygen Music"
+    },
+    "id:OzdiVarosiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:OzoneTV.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "OzoneTv.hu"
+      }
+    },
+    "id:PannonTV.rs@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:PilisTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Prime.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Prime.hu"
+      }
+    },
+    "id:PVTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:RakosmenteTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:RegioPluszTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:RTL.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "RTL.hu"
+      }
+    },
+    "id:RTLGold.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "RTL.GOLD.hu"
+      }
+    },
+    "id:RTLHarom.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "RTL.HÁROM.hu"
+      }
+    },
+    "id:RTLKetto.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "RTL.KETTŐ.hu"
+      }
+    },
+    "id:RTLOtthon.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "RTL.OTTHON.hu"
+      }
+    },
+    "id:SIXOTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:SlagerTV.hu@SD": {
+      "group": "Zene",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Sláger.TV.hu"
+      }
+    },
+    "id:SoltvadkertiTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:SorozatPlus.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Sorozat+.hu"
+      }
+    },
+    "id:Sorozatklub.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "SorozatKlub.hu"
+      }
+    },
+    "id:Spektrum.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Spektrum.hu"
+      }
+    },
+    "id:SpektrumHome.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Spektrum.Home.hu"
+      }
+    },
+    "id:Spiler1.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Spíler1.TV.hu"
+      }
+    },
+    "id:Spiler2.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Spíler2.TV.hu"
+      }
+    },
+    "id:Sport1.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Sport1.hu"
+      }
+    },
+    "id:Sport2.hu@SD": {
+      "group": "Sport",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Sport2.hu"
+      }
+    },
+    "id:Story4.hu@SD": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Story4.hu"
+      }
+    },
+    "id:Story4.hu@Czechia": {
+      "group": "Film",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Story4.hu"
+      },
+      "enabled": false
+    },
+    "id:SuperTV2.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Super.TV2.hu"
+      }
+    },
+    "id:SzecsenyTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:SzolnokTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TataiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TelePaks.hu@SD": {
+      "group": "Helyi TV",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Telepaks.hu"
+      },
+      "enabled": false
+    },
+    "id:TheFishingHuntingChannel.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Fishing.and.Hunting.Channel.hu"
+      },
+      "enabled": false
+    },
+    "id:TheFishingHuntingChannel.hu@HD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Fishing.and.Hunting.Channel.hu"
+      }
+    },
+    "id:TiszaTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TLC.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TLC.hu"
+      }
+    },
+    "id:TravelChannel.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Travel.Channel.HD.hu"
+      }
+    },
+    "id:TrimedioTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TV2.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TV2.hu"
+      }
+    },
+    "id:TV2Comedy.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TV2.Comedy.hu"
+      }
+    },
+    "id:TV2Kids.hu@SD": {
+      "group": "Gyerek",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TV2.Kids.hu"
+      }
+    },
+    "id:TV2Sef.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TV2.Séf.hu"
+      }
+    },
+    "id:TV4.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TV4.hu"
+      }
+    },
+    "id:7TV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TVBudakalasz.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TVEger.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TVKeszthely.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:TVPaprika.hu@SD": {
+      "group": "Életmód",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "TV.Paprika.hu"
+      }
+    },
+    "id:TVSzentendre.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:VasarhelyiTelevizio.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Viasat2.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Viasat.2.hu"
+      }
+    },
+    "id:Viasat3.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Viasat.3.hu"
+      }
+    },
+    "id:Viasat6.hu@SD": {
+      "group": "Általános",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Viasat.6.hu"
+      }
+    },
+    "id:ViasatExplore.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Viasat.Explore.hu"
+      }
+    },
+    "id:ViasatHistory.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Viasat.History.hu"
+      }
+    },
+    "id:ViasatNature.hu@SD": {
+      "group": "Ismeretterjesztő",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Viasat.Nature.hu"
+      }
+    },
+    "id:VolgyhidTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:VTVFuzesabony.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:VTVMor.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:WilliamsTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:XVTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:ZalaegerszegiTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    },
+    "id:Zenebutik.hu@SD": {
+      "group": "Zene",
+      "epg": {
+        "source": "epgshare-hu",
+        "id": "Zenebutik.hu"
+      }
+    },
+    "id:ZugloTV.hu@SD": {
+      "group": "Helyi TV",
+      "enabled": false
+    }
+  }
+}
