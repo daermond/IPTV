@@ -3,7 +3,9 @@ import test from 'node:test';
 import { spawnSync } from 'node:child_process';
 import { gzipSync } from 'node:zlib';
 import { validateProject } from '../scripts/build.mjs';
-import { collectChannels, membershipChanges, parsePlaylist, projectChannels, renderPlaylist, streamKey } from '../web/playlist.js';
+import {
+  collectChannels, manualChannelKey, membershipChanges, orderByGroups, parsePlaylist, projectChannels, renderPlaylist, streamKey,
+} from '../web/playlist.js';
 
 const first = parsePlaylist(`#EXTM3U
 #EXTINF:-1 tvg-id="ATV.hu@SD" tvg-logo="https://example.org/atv.png",ATV
@@ -60,6 +62,54 @@ test('merges exact matches across sources, preserves feed variants and deduplica
   const merged = collectChannels(['hu', 'other'], { hu: first, other: [first[0], ...overseas] });
   assert.equal(merged.length, 3);
   assert.equal(merged.find(channel => channel.key === 'id:ATV.hu@SD').streams.length, 2);
+});
+
+test('applies custom group order once while keeping existing intra-group positions and Unassigned at the end', () => {
+  const extras = parsePlaylist(`#EXTM3U
+#EXTINF:-1 tvg-id="M1.hu@HD",M1
+https://example.org/m1.m3u8
+#EXTINF:-1 tvg-id="M5.hu@SD",M5
+https://example.org/m5.m3u8
+`);
+  const project = {
+    ...config,
+    groups: ['Sport', 'Hírek'],
+    sort: 'number',
+    order: ['id:ATV.hu@SD', 'id:M4Sport.hu@SD', 'id:Missing.hu@SD', 'id:M1.hu@HD'],
+    channels: {
+      'id:ATV.hu@SD': { group: 'Hírek', number: 90 },
+      'id:Missing.hu@SD': { group: 'Hírek' },
+      'id:M1.hu@HD': { group: 'Hírek', number: 2 },
+      'id:M4Sport.hu@SD': { group: 'Sport' },
+    },
+  };
+  const catalog = { hu: [...first, ...extras] };
+  const order = orderByGroups(project, catalog, {});
+  assert.deepEqual(order, ['id:M4Sport.hu@SD', 'id:ATV.hu@SD', 'id:Missing.hu@SD', 'id:M1.hu@HD', 'id:M5.hu@SD']);
+  assert.deepEqual(orderByGroups({ ...project, order, sort: 'manual' }, catalog, {}), order);
+  const grouped = renderPlaylist({ ...project, order, sort: 'manual' }, catalog, {}, sources.epg);
+  assert.deepEqual(parsePlaylist(grouped).map(stream => stream.attributes['group-title']), ['Sport', 'Hírek', 'Hírek', 'Unassigned']);
+});
+
+test('exports project-only channels with the same metadata and controls as imported channels', () => {
+  const channel = { id: 'special', name: 'Saját TV', url: 'https://example.org/live.m3u8' };
+  const key = manualChannelKey(channel.id);
+  const project = {
+    ...config,
+    manualChannels: [channel],
+    channels: { [key]: { group: 'Hírek', number: 7, epg: { source: 'guide', id: 'local.xmltv' } } },
+  };
+  const catalog = { hu: first };
+  const guides = validateProject(project, sources);
+  assert.equal(orderByGroups(project, catalog, {})[0], key);
+  const manual = parsePlaylist(renderPlaylist(project, catalog, {}, guides)).find(stream => stream.url === channel.url);
+  assert.equal(manual.name, channel.name);
+  assert.equal(manual.attributes['group-title'], 'Hírek');
+  assert.equal(manual.attributes['tvg-chno'], '7');
+  assert.equal(manual.attributes['tvg-id'], 'local.xmltv');
+  assert.ok(!renderPlaylist({ ...project, channels: { [key]: { enabled: false } } }, catalog, {}, guides).includes(channel.url));
+  assert.throws(() => validateProject({ ...project, manualChannels: [channel, channel] }, sources), /manualChannels/u);
+  assert.throws(() => validateProject({ ...project, manualChannels: [{ ...channel, url: channel.url + '\n#EXTINF:0' }] }, sources), /manualChannels/u);
 });
 
 test('membership changes log only additions and removals after the first successful snapshot', () => {

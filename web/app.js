@@ -1,4 +1,6 @@
-import { has, httpsUrl, ID, projectChannels, streamKey, UNASSIGNED } from './playlist.js';
+import {
+  has, httpsUrl, ID, manualChannelKey, manualStreamUrl, orderByGroups, projectChannels, streamKey, UNASSIGNED,
+} from './playlist.js';
 
 const byId = id => document.getElementById(id);
 const dialog = byId('dialog');
@@ -8,6 +10,7 @@ const projects = new Map();
 let site, project, projectId, baseProject, baseSha, token, dirty = false, busy = false;
 let selectedGroup = null;
 let dragKey = null;
+let draggedGroup = null;
 let expandedEpg = null;
 
 function node(tag, props = {}, ...children) {
@@ -269,6 +272,78 @@ function editGroup(group) {
   });
 }
 
+function applyGroupOrder() {
+  const order = orderByGroups(project, site.catalog, site.logos);
+  if (project.sort !== 'manual' || order.length !== project.order.length ||
+    order.some((key, index) => key !== project.order[index])) {
+    project.order = order;
+    project.sort = 'manual';
+    edited();
+    notice('A lista csoportsorrendbe rendezve. A Mentés után az M3U is frissül.');
+  }
+  selectedGroup = null;
+  render();
+}
+
+function moveGroup(source, target, after) {
+  if (!project.groups.includes(source) || source === target) return;
+  const groups = project.groups.filter(group => group !== source);
+  const index = groups.indexOf(target);
+  if (index === -1) return;
+  groups.splice(index + Number(after), 0, source);
+  if (groups.every((group, position) => group === project.groups[position])) return;
+  const refocus = document.activeElement?.dataset.groupGrip === source;
+  project.groups = groups;
+  edited();
+  render();
+  if (refocus) byId('groups').querySelector(`[data-group-grip="${CSS.escape(source)}"]`)?.focus();
+}
+
+function addGroupDrag(row, group) {
+  const grip = button('⠿', () => {}, 'drag group-grip');
+  grip.draggable = true;
+  grip.dataset.groupGrip = group;
+  grip.setAttribute('aria-label', `Csoport áthelyezése – ${group}`);
+  grip.title = 'Húzd másik csoport elé vagy mögé, vagy használd a fel és le nyilat.';
+  grip.ondragstart = event => {
+    draggedGroup = group;
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', group);
+  };
+  grip.ondragend = () => {
+    draggedGroup = null;
+    for (const other of byId('groups').children) delete other.dataset.drop;
+  };
+  grip.onkeydown = event => {
+    const offset = event.key === 'ArrowUp' ? -1 : event.key === 'ArrowDown' ? 1 : 0;
+    if (!offset) return;
+    const target = project.groups[project.groups.indexOf(group) + offset];
+    if (target === undefined) return;
+    event.preventDefault();
+    moveGroup(group, target, offset > 0);
+  };
+  const dropAfter = event => {
+    const box = row.getBoundingClientRect();
+    if (matchMedia('(max-width: 780px)').matches) return event.clientX > box.left + box.width / 2;
+    return event.clientY > box.top + box.height / 2;
+  };
+  row.ondragover = event => {
+    if (!draggedGroup || draggedGroup === group) return;
+    event.preventDefault();
+    row.dataset.drop = dropAfter(event) ? 'after' : 'before';
+  };
+  row.ondragleave = event => { if (!row.contains(event.relatedTarget)) delete row.dataset.drop; };
+  row.ondrop = event => {
+    if (!draggedGroup) return;
+    event.preventDefault();
+    const source = draggedGroup;
+    draggedGroup = null;
+    delete row.dataset.drop;
+    moveGroup(source, group, dropAfter(event));
+  };
+  row.prepend(grip);
+}
+
 function updateChannel(key, changes, redraw = true) {
   const override = { ...project.channels[key], ...changes };
   for (const field of Object.keys(override)) if (override[field] === undefined) delete override[field];
@@ -289,6 +364,53 @@ function numberField(value) {
 function readNumber(field) {
   if (!field.validity.valid) throw new Error('A csatornaszám pozitív egész szám legyen.');
   return field.value === '' ? null : field.valueAsNumber;
+}
+
+function streamField(url = '') {
+  return input('text', url, { required: true, inputMode: 'url', autocomplete: 'off', spellcheck: false,
+    placeholder: 'https://…/stream.m3u8' });
+}
+
+function readStreamUrl(field) {
+  const url = field.value.trim();
+  if (!manualStreamUrl(url)) throw new Error('Adj meg egy érvényes, közvetlen streamcímet.');
+  return url;
+}
+
+function addManualChannel() {
+  const name = input('text', '', { required: true, maxLength: 180 });
+  const url = streamField();
+  const number = numberField(null);
+  const group = groupSelect(selectedGroup ?? UNASSIGNED);
+  form('Saját csatorna hozzáadása', [
+    label('Csatorna neve', name),
+    label('Stream URL', url, 'Ez a cím megjelenik a nyilvános M3U-fájlban.'),
+    node('div', { className: 'two-fields' }, label('Csatornaszám', number), label('Csoport', group)),
+  ], () => {
+    const channelName = name.value.trim();
+    if (!validText(channelName)) throw new Error('Adj meg egy érvényes csatornanevet.');
+    const address = readStreamUrl(url);
+    const chno = readNumber(number);
+    const id = crypto.randomUUID();
+    const key = manualChannelKey(id);
+    (project.manualChannels ??= []).push({ id, name: channelName, url: address });
+    if (selectedGroup !== null) selectedGroup = group.value;
+    byId('search').value = '';
+    byId('visibility').value = 'all';
+    updateChannel(key, { number: chno ?? undefined, group: group.value === UNASSIGNED ? undefined : group.value });
+    requestAnimationFrame(() => rowControl(key, 'details')?.scrollIntoView({ block: 'nearest' }));
+  }, 'Hozzáadás');
+}
+
+function removeManualChannel(channel) {
+  if (!confirm(`Eltávolítod a(z) „${channel.name}” saját csatornát a projektből?`)) return;
+  project.manualChannels = project.manualChannels.filter(entry => entry.id !== channel.manual.id);
+  if (!project.manualChannels.length) delete project.manualChannels;
+  delete project.channels[channel.key];
+  project.order = project.order.filter(key => key !== channel.key);
+  dialog.close();
+  edited();
+  render();
 }
 
 function epgEditor(channel, inline = false) {
@@ -336,10 +458,13 @@ function epgEditor(channel, inline = false) {
 
 function editChannel(channel) {
   const original = project.channels[channel.key] ?? {};
-  const name = input('text', original.name ?? '', { placeholder: channel.name, maxLength: 180 });
+  const manual = channel.manual;
+  const name = input('text', manual ? channel.name : original.name ?? '',
+    { required: Boolean(manual), placeholder: channel.name, maxLength: 180 });
   const number = numberField(channel.number);
   const logo = input('url', original.logo ?? '', { placeholder: 'https://…' });
   const group = groupSelect(channel.group);
+  const url = manual ? streamField(manual.url) : null;
   const streamOptions = channel.streams.map((s, index) => {
     let host = s.url;
     try { host = new URL(s.url.replace(/^@/u, '')).hostname || s.url; }
@@ -352,23 +477,29 @@ function editChannel(channel) {
   const primary = select([['A forrás első streamje', ''], ...streamOptions], original.primary ?? '');
   const epg = epgEditor(channel);
   form(channel.name, [
-    label('Megjelenített név', name, 'Üresen a forrás nevét használja.'),
+    label('Megjelenített név', name, manual ? undefined : 'Üresen a forrás nevét használja.'),
     node('div', { className: 'two-fields' }, label('Csatornaszám', number), label('Csoport', group)),
     label('Saját logó URL-je', logo, 'HTTPS kép-URL. Üresen visszaáll az alapértelmezett logó.'),
-    label('Elsődleges stream', primary),
+    url ? label('Stream URL', url, 'Ez a cím megjelenik a nyilvános M3U-fájlban.') : label('Elsődleges stream', primary),
     ...epg.fields,
+    ...(manual ? [button('Saját csatorna törlése', () => removeManualChannel(channel), 'remove-channel')] : []),
   ], () => {
     const customLogo = logo.value.trim();
     if (customLogo && !httpsUrl(customLogo)) throw new Error('A logóhoz érvényes HTTPS kép-URL kell.');
     const chno = readNumber(number);
     const nameValue = name.value.trim();
-    if (nameValue && !validText(nameValue)) throw new Error('Adj meg egy érvényes csatornanevet.');
+    if ((manual || nameValue) && !validText(nameValue)) throw new Error('Adj meg egy érvényes csatornanevet.');
     const assignment = epg.read();
+    if (manual) {
+      manual.url = readStreamUrl(url);
+      manual.name = nameValue;
+    }
     if (expandedEpg?.key === channel.key) expandedEpg = null;
     updateChannel(channel.key, {
-      name: nameValue || undefined, number: chno === channel.number ? original.number : chno, logo: customLogo || undefined,
+      name: manual ? undefined : nameValue || undefined,
+      number: chno === channel.number ? original.number : chno, logo: customLogo || undefined,
       group: group.value === UNASSIGNED ? undefined : group.value,
-      primary: primary.value || undefined,
+      primary: manual ? undefined : primary.value || undefined,
       epg: assignment,
     });
   });
@@ -588,6 +719,7 @@ function render() {
   byId('title').textContent = project.name;
   byId('stats').textContent = `${enabled} aktív · ${channels.length} csatorna${missing.length ? ` · ${missing.length} hiányzik` : ''}`;
   byId('sort').value = project.sort;
+  byId('apply-group-order').disabled = project.groups.length === 0;
   byId('log-link').href = githubLink(`/blob/${site.branch}/channel-changes.log`);
   const published = site.projects.some(item => item.id === projectId);
   byId('output').hidden = !published;
@@ -606,6 +738,7 @@ function render() {
     choose.setAttribute('aria-current', String(group === selectedGroup));
     const wrapper = node('div', { className: 'group-row' }, choose);
     if (group && group !== UNASSIGNED) {
+      addGroupDrag(wrapper, group);
       const menu = button('⋯', () => editGroup(group), 'group-menu');
       menu.setAttribute('aria-label', `${group} szerkesztése`);
       wrapper.append(menu);
@@ -657,6 +790,7 @@ function render() {
     const edit = button('', () => editChannel(channel), 'channel');
     edit.dataset.control = 'details';
     edit.append(logoFor(channel), node('span', { className: 'channel-title', textContent: channel.name }));
+    if (channel.manual) edit.append(node('span', { className: 'manual-label', textContent: 'Saját' }));
     const toggle = input('checkbox', '', { checked: channel.enabled });
     toggle.dataset.control = 'active';
     toggle.setAttribute('aria-label', `${channel.name} bekapcsolva`);
@@ -754,6 +888,8 @@ byId('save').onclick = () => run(save);
 byId('settings').onclick = settings;
 byId('epg-suggestions').onclick = suggestEpg;
 byId('add-group').onclick = () => editGroup();
+byId('apply-group-order').onclick = applyGroupOrder;
+byId('add-channel').onclick = addManualChannel;
 byId('search').oninput = render;
 byId('visibility').onchange = render;
 byId('sort').onchange = () => { project.sort = byId('sort').value; edited(); render(); };

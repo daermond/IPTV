@@ -3,7 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import {
-  channelKey, has, httpsUrl, ID, membershipChanges, parsePlaylist, renderPlaylist, UNASSIGNED,
+  channelKey, has, httpsUrl, ID, manualStreamUrl, membershipChanges, parsePlaylist, renderPlaylist, UNASSIGNED,
 } from '../web/playlist.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -45,6 +45,10 @@ export function validateProject(project, sources) {
   require(Array.isArray(project.groups) && unique(project.groups)
     && project.groups.every(group => text(group) && group.toLowerCase() !== UNASSIGNED.toLowerCase()), 'groups');
   require(Array.isArray(project.order) && unique(project.order) && project.order.every(text), 'order');
+  const manual = project.manualChannels === undefined ? [] : project.manualChannels;
+  require(Array.isArray(manual) && manual.every(channel => object(channel) &&
+    typeof channel.id === 'string' && ID.test(channel.id) && text(channel.name) && manualStreamUrl(channel.url))
+    && unique(manual.map(channel => channel.id)), 'manualChannels');
   require(object(project.channels), 'channels');
   for (const [key, override] of Object.entries(project.channels)) {
     require(text(key) && object(override), 'channel');

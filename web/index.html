@@ -29,6 +29,8 @@
         <div class="section-line"><h2>Csoportok</h2><button id="add-group" class="square" type="button" aria-label="Új csoport" title="Új csoport">+</button></div>
         <nav id="groups" aria-label="Csatornacsoportok"></nav>
         <div class="side-tools">
+          <button id="apply-group-order" class="group-order" type="button"
+            title="A teljes lista átrendezése a csoportokon belüli kézi sorrend megtartásával">Csoportsorrend alkalmazása</button>
           <button id="epg-suggestions" type="button">EPG-javaslatok</button>
           <button id="settings" type="button">Projektbeállítások</button>
           <a id="log-link" target="_blank" rel="noopener">Csatornaváltozások ↗</a>
@@ -37,7 +39,10 @@
       <section class="content" aria-labelledby="title">
         <div class="headline">
           <div><h1 id="title">Csatornák</h1><p id="stats" class="muted"></p></div>
-          <a id="output" class="m3u" target="_blank" rel="noopener">Kész M3U ↗</a>
+          <div class="output-actions">
+            <button id="add-channel" type="button">+ Saját csatorna</button>
+            <a id="output" class="m3u" target="_blank" rel="noopener">Kész M3U ↗</a>
+          </div>
         </div>
         <div class="toolbar">
           <input id="search" type="search" aria-label="Csatorna keresése" placeholder="Csatorna keresése…">
