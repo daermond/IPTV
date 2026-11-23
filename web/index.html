@@ -42,10 +42,14 @@
       <section class="content" aria-labelledby="title">
         <div class="headline">
           <div><h1 id="title">Csatornák</h1><p id="stats" class="muted"></p></div>
-          <div class="output-actions">
-            <button id="add-channel" type="button">+ Saját csatorna</button>
-            <a id="output" class="m3u" target="_blank" rel="noopener">Kész M3U ↗</a>
-          </div>
+          <button id="add-channel" type="button">+ Saját csatorna</button>
+        </div>
+        <div id="output" class="playlist-output" hidden>
+          <label for="output-url">Kész M3U</label>
+          <input id="output-url" type="text" readonly spellcheck="false">
+          <button id="copy-output" type="button">Másolás</button>
+          <a id="open-output" class="m3u" target="_blank" rel="noopener">Megnyitás ↗</a>
+          <p id="copy-feedback" class="copy-feedback" role="status"></p>
         </div>
         <div class="toolbar">
           <input id="search" type="search" aria-label="Csatorna keresése" placeholder="Csatorna keresése…">

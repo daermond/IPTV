@@ -7,13 +7,17 @@ const dialog = byId('dialog');
 const rows = byId('rows');
 const picker = byId('project');
 const copyProjectButton = byId('copy-project');
+const outputUrl = byId('output-url');
+const copyFeedback = byId('copy-feedback');
 const projects = new Map();
 const retainedDrafts = new Map();
+const publishedPlaylists = new Map();
 let site, project, projectId, baseProject, baseSha, token, dirty = false, busy = false;
 let selectedGroup = null;
 let dragKey = null;
 let draggedGroup = null;
 let expandedEpg = null;
+let publicationTimer, publicationCheck = 0;
 
 function node(tag, props = {}, ...children) {
   const element = Object.assign(document.createElement(tag), props);
@@ -158,6 +162,69 @@ function updatePicker() {
   picker.value = projectId;
 }
 
+function playlistUrl(id) {
+  return new URL(`playlists/${id}.m3u`, document.baseURI);
+}
+
+function renderPublication() {
+  const output = byId('output');
+  const ready = publishedPlaylists.has(projectId);
+  const url = ready ? playlistUrl(projectId).href : '';
+  output.hidden = !ready;
+  (byId('open-output') ?? output).href = url;
+  if (outputUrl && outputUrl.value !== url) {
+    outputUrl.value = url;
+    copyFeedback.textContent = '';
+  }
+  const date = Date.parse(publishedPlaylists.get(projectId));
+  byId('published').textContent = ready
+    ? (Number.isFinite(date)
+      ? `Közzétéve: ${new Date(date).toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}`
+      : 'Az M3U elérhető.')
+    : baseProject === null
+      ? 'Az M3U-cím a projekt mentése és közzététele után jelenik meg.'
+      : 'Az M3U-cím a közzététel után automatikusan megjelenik.';
+}
+
+function watchPublication() {
+  clearTimeout(publicationTimer);
+  const checkId = ++publicationCheck;
+  const id = projectId;
+  if (!id || baseProject === null || publishedPlaylists.has(id) || document.hidden) return;
+
+  async function check() {
+    const url = playlistUrl(id);
+    url.searchParams.set('check', Date.now());
+    try {
+      const response = await fetch(url, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(5000) });
+      if (checkId !== publicationCheck) return;
+      if (response.ok && !response.headers.get('content-type')?.startsWith('text/html')) {
+        publishedPlaylists.set(id, response.headers.get('last-modified'));
+        renderPublication();
+        return;
+      }
+    } catch {
+      // Keep checking while the project is open, including after a transient network error.
+    }
+    if (checkId === publicationCheck && !document.hidden) publicationTimer = setTimeout(check, 10000);
+  }
+  void check();
+}
+
+async function copyPlaylistUrl() {
+  const url = outputUrl.value;
+  if (!url) return;
+  try {
+    await navigator.clipboard.writeText(url);
+    if (outputUrl.value === url) copyFeedback.textContent = 'Az M3U-cím a vágólapra került.';
+  } catch {
+    if (outputUrl.value !== url) return;
+    outputUrl.focus();
+    outputUrl.select();
+    copyFeedback.textContent = 'A cím ki van jelölve, így kézzel másolható.';
+  }
+}
+
 function activateProject(id, { value, baseline, sha, modified = false }, message = '') {
   projectId = id;
   project = value;
@@ -173,6 +240,8 @@ function activateProject(id, { value, baseline, sha, modified = false }, message
   notice(message);
   updateControls();
   render();
+  renderPublication();
+  watchPublication();
 }
 
 async function openProject(id) {
@@ -232,6 +301,8 @@ async function save() {
   notice('A projekt elmentve. Az M3U a következő sikeres GitHub Actions futás után frissül.', 'success');
   updatePicker();
   render();
+  renderPublication();
+  watchPublication();
 }
 
 function suggestedCopyName() {
@@ -745,12 +816,6 @@ function render() {
   byId('sort').value = project.sort;
   byId('apply-group-order').disabled = project.groups.length === 0;
   byId('log-link').href = githubLink(`/blob/${site.branch}/channel-changes.log`);
-  const published = site.projects.some(item => item.id === projectId);
-  byId('output').hidden = !published;
-  byId('output').href = `playlists/${projectId}.m3u`;
-  byId('published').textContent = published
-    ? `Közzétéve: ${new Date(site.generatedAt).toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}`
-    : 'Az M3U a projekt első sikeres közzététele után jelenik meg.';
 
   byId('groups').replaceChildren(...[null, ...project.groups, UNASSIGNED].map(group => {
     const choose = button('', () => { selectedGroup = group; render(); }, 'group');
@@ -884,7 +949,10 @@ async function initialize() {
   const response = await fetch('data/catalog.json', { cache: 'no-store', signal: AbortSignal.timeout(15_000) });
   if (!response.ok) throw new Error('A csatornakatalógus még nem érhető el. Ellenőrizd az Actions futását.');
   site = await response.json();
-  for (const entry of site.projects) projects.set(entry.id, entry);
+  for (const entry of site.projects) {
+    projects.set(entry.id, entry);
+    publishedPlaylists.set(entry.id, site.generatedAt);
+  }
   try {
     const files = await api(`${apiPath()}?ref=${encodeURIComponent(site.branch)}`);
     for (const { name } of files) {
@@ -915,8 +983,11 @@ byId('epg-suggestions').onclick = suggestEpg;
 byId('add-group').onclick = () => editGroup();
 byId('apply-group-order').onclick = applyGroupOrder;
 byId('add-channel').onclick = addManualChannel;
+byId('copy-output')?.addEventListener('click', copyPlaylistUrl);
+outputUrl?.addEventListener('click', () => outputUrl.select());
 byId('search').oninput = render;
 byId('visibility').onchange = render;
 byId('sort').onchange = () => { project.sort = byId('sort').value; edited(); render(); };
 window.addEventListener('beforeunload', event => { if (dirty || retainedDrafts.size) event.preventDefault(); });
+document.addEventListener('visibilitychange', watchPublication);
 run(initialize);
