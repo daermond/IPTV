@@ -8,6 +8,7 @@ const projects = new Map();
 let site, project, projectId, baseProject, baseSha, token, dirty = false, busy = false;
 let selectedGroup = null;
 let dragKey = null;
+let expandedEpg = null;
 
 function node(tag, props = {}, ...children) {
   const element = Object.assign(document.createElement(tag), props);
@@ -162,6 +163,7 @@ async function openProject(id) {
   baseSha = latest?.sha;
   dirty = false;
   selectedGroup = null;
+  expandedEpg = null;
   byId('search').value = '';
   byId('visibility').value = 'all';
   byId('editor').hidden = false;
@@ -232,6 +234,7 @@ function newProject() {
     baseProject = null;
     baseSha = null;
     selectedGroup = null;
+    expandedEpg = null;
     byId('search').value = '';
     byId('visibility').value = 'all';
     edited();
@@ -266,35 +269,35 @@ function editGroup(group) {
   });
 }
 
-function updateChannel(key, changes) {
+function updateChannel(key, changes, redraw = true) {
   const override = { ...project.channels[key], ...changes };
   for (const field of Object.keys(override)) if (override[field] === undefined) delete override[field];
   if (Object.keys(override).length) project.channels[key] = override;
   else delete project.channels[key];
   edited();
-  render();
+  if (redraw) render();
 }
 
-function editChannel(channel) {
-  const original = project.channels[channel.key] ?? {};
-  const name = input('text', original.name ?? '', { placeholder: channel.name, maxLength: 180 });
-  const number = input('number', original.number ?? '', { min: '1', step: '1', placeholder: String(channel.number ?? '') });
-  const logo = input('url', original.logo ?? '', { placeholder: 'https://…' });
-  const group = select([UNASSIGNED, ...project.groups].map(group => [group, group]), channel.group);
-  const streamOptions = channel.streams.map((s, index) => {
-    let host = s.url;
-    try { host = new URL(s.url.replace(/^@/u, '')).hostname || s.url; }
-    catch { /* Some player-specific URL formats are not valid browser URLs. */ }
-    return [`${index + 1}. ${s.name || channel.name} · ${host}`, streamKey(s)];
-  });
-  if (original.primary && !streamOptions.some(([, key]) => key === original.primary)) {
-    streamOptions.push(['A korábban választott stream jelenleg hiányzik', original.primary]);
-  }
-  const primary = select([['A forrás első streamje', ''], ...streamOptions], original.primary ?? '');
+function groupSelect(group) {
+  return select([UNASSIGNED, ...project.groups].map(name => [name, name]), group);
+}
+
+function numberField(value) {
+  return input('number', value ?? '', { min: '1', max: String(Number.MAX_SAFE_INTEGER), step: '1', inputMode: 'numeric' });
+}
+
+function readNumber(field) {
+  if (!field.validity.valid) throw new Error('A csatornaszám pozitív egész szám legyen.');
+  return field.value === '' ? null : field.valueAsNumber;
+}
+
+function epgEditor(channel, inline = false) {
   const available = epgSources().filter(source => project.epgSources.includes(source.id));
-  const epgSource = select([['Nincs kézi hozzárendelés', ''], ...available.map(source => [source.name, source.id])], channel.epg?.source ?? '');
+  const initialSource = inline && available.length === 1 ? available[0].id : '';
+  const epgSource = select([['Nincs kézi hozzárendelés', ''], ...available.map(source => [source.name, source.id])],
+    channel.epg?.source ?? initialSource);
   const epgId = input('text', channel.epg?.id ?? '', { autocomplete: 'off' });
-  const epgList = node('datalist', { id: 'epg-candidates' });
+  const epgList = node('datalist', { id: inline ? 'row-epg-candidates' : 'epg-candidates' });
   epgId.setAttribute('list', epgList.id);
   const epgHint = node('small', { className: 'muted' });
   const epgSuggestion = button('', () => { epgId.value = epgSuggestion.dataset.id; epgId.focus(); });
@@ -309,35 +312,136 @@ function editChannel(channel) {
       epgSuggestion.textContent = `EPG-javaslat: ${match.name}`;
       epgSuggestion.dataset.id = match.id;
     }
-    epgHint.textContent = source && entries.length === 0
-      ? 'A forrás csatornaindexe még üres. Megadhatod a pontos XMLTV-azonosítót kézzel.'
-      : 'Keress a műsorújság csatornanevére vagy add meg az XMLTV-azonosítót.';
+    if (!available.length) epgHint.textContent = 'Adj hozzá egy EPG-forrást a Projektbeállításokban.';
+    else if (source && entries.length === 0) epgHint.textContent = 'A forrás csatornaindexe még üres. Megadhatod a pontos XMLTV-azonosítót kézzel.';
+    else epgHint.textContent = 'Keress a műsorújság csatornanevére vagy add meg az XMLTV-azonosítót.';
   };
   epgSource.onchange = () => { epgId.value = ''; refreshOptions(); };
   refreshOptions();
+  return {
+    source: epgSource,
+    fields: [
+      label('EPG-forrás', epgSource),
+      node('label', { className: 'field' }, 'EPG-csatorna', epgId, epgList, epgHint),
+      epgSuggestion,
+    ],
+    read() {
+      if (!epgSource.value) return undefined;
+      const id = epgId.value.trim();
+      if (!validText(id)) throw new Error('Add meg az EPG-csatorna azonosítóját.');
+      return { source: epgSource.value, id };
+    },
+  };
+}
+
+function editChannel(channel) {
+  const original = project.channels[channel.key] ?? {};
+  const name = input('text', original.name ?? '', { placeholder: channel.name, maxLength: 180 });
+  const number = numberField(channel.number);
+  const logo = input('url', original.logo ?? '', { placeholder: 'https://…' });
+  const group = groupSelect(channel.group);
+  const streamOptions = channel.streams.map((s, index) => {
+    let host = s.url;
+    try { host = new URL(s.url.replace(/^@/u, '')).hostname || s.url; }
+    catch { /* Some player-specific URL formats are not valid browser URLs. */ }
+    return [`${index + 1}. ${s.name || channel.name} · ${host}`, streamKey(s)];
+  });
+  if (original.primary && !streamOptions.some(([, key]) => key === original.primary)) {
+    streamOptions.push(['A korábban választott stream jelenleg hiányzik', original.primary]);
+  }
+  const primary = select([['A forrás első streamje', ''], ...streamOptions], original.primary ?? '');
+  const epg = epgEditor(channel);
   form(channel.name, [
     label('Megjelenített név', name, 'Üresen a forrás nevét használja.'),
     node('div', { className: 'two-fields' }, label('Csatornaszám', number), label('Csoport', group)),
     label('Saját logó URL-je', logo, 'HTTPS kép-URL. Üresen visszaáll az alapértelmezett logó.'),
     label('Elsődleges stream', primary),
-    label('EPG-forrás', epgSource),
-    node('label', { className: 'field' }, 'EPG-csatorna', epgId, epgList, epgHint), epgSuggestion,
+    ...epg.fields,
   ], () => {
     const customLogo = logo.value.trim();
     if (customLogo && !httpsUrl(customLogo)) throw new Error('A logóhoz érvényes HTTPS kép-URL kell.');
-    const chno = number.value === '' ? undefined : Number(number.value);
-    if (chno !== undefined && (!Number.isSafeInteger(chno) || chno < 1)) throw new Error('A csatornaszám pozitív egész szám legyen.');
-    const epgChannel = epgId.value.trim();
-    if (epgSource.value && !validText(epgChannel)) throw new Error('Add meg az EPG-csatorna azonosítóját.');
+    const chno = readNumber(number);
     const nameValue = name.value.trim();
     if (nameValue && !validText(nameValue)) throw new Error('Adj meg egy érvényes csatornanevet.');
+    const assignment = epg.read();
+    if (expandedEpg?.key === channel.key) expandedEpg = null;
     updateChannel(channel.key, {
-      name: nameValue || undefined, number: chno, logo: customLogo || undefined,
+      name: nameValue || undefined, number: chno === channel.number ? original.number : chno, logo: customLogo || undefined,
       group: group.value === UNASSIGNED ? undefined : group.value,
       primary: primary.value || undefined,
-      epg: epgSource.value ? { source: epgSource.value, id: epgChannel } : undefined,
+      epg: assignment,
     });
   });
+}
+
+function rowControl(key, control) {
+  return rows.querySelector(`[data-channel-key="${CSS.escape(key)}"] [data-control="${control}"]`);
+}
+
+function rowNumber(channel) {
+  let saved = channel.number;
+  const number = numberField(saved);
+  number.className = 'row-number';
+  number.placeholder = '—';
+  number.dataset.control = 'number';
+  number.setAttribute('aria-label', `Csatornaszám – ${channel.name}`);
+  const commit = () => {
+    let next;
+    try { next = readNumber(number); }
+    catch (error) {
+      number.value = saved ?? '';
+      notice(error.message, 'error');
+      return;
+    }
+    if (next === saved) return;
+    saved = next;
+    updateChannel(channel.key, { number: next }, false);
+    // Let Tab or a click finish moving focus before reordering the rows.
+    if (project.sort === 'number') requestAnimationFrame(render);
+    else renderWarnings(allChannels());
+  };
+  number.onchange = commit;
+  number.onkeydown = event => {
+    if (event.key !== 'Enter') return;
+    event.preventDefault();
+    commit();
+  };
+  return number;
+}
+
+function toggleRowEpg(channel) {
+  const close = () => {
+    expandedEpg = null;
+    render();
+    rowControl(channel.key, 'epg')?.focus();
+  };
+  if (expandedEpg?.key === channel.key) { close(); return; }
+  const editor = epgEditor(channel, true);
+  const error = node('p', { className: 'warning', hidden: true, role: 'alert' });
+  const body = node('form', { className: 'row-epg-form', ariaLabel: `EPG – ${channel.name}` },
+    node('div', { className: 'row-epg-fields' }, ...editor.fields),
+    error,
+    node('div', { className: 'row-epg-actions' },
+      node('button', { type: 'submit', className: 'primary', textContent: 'Alkalmazás' }),
+      button('Mégse', close)));
+  body.onsubmit = event => {
+    event.preventDefault();
+    try {
+      const epg = editor.read();
+      if (epg?.source !== channel.epg?.source || epg?.id !== channel.epg?.id) {
+        updateChannel(channel.key, { epg }, false);
+      }
+      close();
+    } catch (failure) {
+      error.textContent = failure.message;
+      error.hidden = false;
+    }
+  };
+  body.onkeydown = event => { if (event.key === 'Escape') close(); };
+  const row = node('tr', { className: 'row-epg', id: 'row-epg-panel' }, node('td', { colSpan: 7 }, body));
+  expandedEpg = { key: channel.key, row };
+  render();
+  editor.source.focus();
 }
 
 function suggestEpg() {
@@ -369,6 +473,7 @@ function suggestEpg() {
     for (const { channel, match } of chosen) {
       project.channels[channel.key] = { ...project.channels[channel.key], epg: { source: selected.value, id: match.id } };
     }
+    expandedEpg = null;
     edited();
     render();
   });
@@ -437,6 +542,7 @@ function settings() {
     project.epgSources = chosen;
     if (customs.length) project.customEpg = customs;
     project.streamMode = mode.value;
+    expandedEpg = null;
     edited();
     render();
   });
@@ -472,6 +578,8 @@ function logoFor(channel) {
 }
 
 function render() {
+  const focused = document.activeElement;
+  const focusedRow = focused.closest('tr[data-channel-key]');
   const channels = allChannels();
   const enabled = channels.filter(channel => channel.enabled).length;
   const currentKeys = new Set(channels.map(channel => channel.key));
@@ -510,10 +618,13 @@ function render() {
   const visible = channels.filter(channel => (selectedGroup === null || selectedGroup === channel.group)
     && (!query || normalize(`${channel.name} ${channel.key}`).includes(query))
     && (visibility === 'all' || (visibility === 'on' && channel.enabled) || (visibility === 'off' && !channel.enabled)));
-  const tableRows = visible.map((channel, index) => {
+  if (expandedEpg && !visible.some(channel => channel.key === expandedEpg.key)) expandedEpg = null;
+  const tableRows = visible.flatMap((channel, index) => {
     const row = node('tr');
+    row.dataset.channelKey = channel.key;
     row.dataset.disabled = String(!channel.enabled);
     const handle = button('⠿', () => {}, 'drag');
+    handle.dataset.control = 'drag';
     handle.disabled = project.sort !== 'manual';
     handle.draggable = !handle.disabled;
     handle.setAttribute('aria-label', `${channel.name} áthelyezése`);
@@ -529,7 +640,6 @@ function render() {
       if (!visible[to]) return;
       event.preventDefault();
       move(channel.key, visible[to].key, to > index);
-      [...rows.querySelectorAll('.drag')].find(item => item.getAttribute('aria-label') === handle.getAttribute('aria-label'))?.focus();
     };
     row.ondragover = event => {
       if (!dragKey || dragKey === channel.key) return;
@@ -545,15 +655,29 @@ function render() {
       move(source, channel.key, dropPosition(event, row));
     };
     const edit = button('', () => editChannel(channel), 'channel');
+    edit.dataset.control = 'details';
     edit.append(logoFor(channel), node('span', { className: 'channel-title', textContent: channel.name }));
     const toggle = input('checkbox', '', { checked: channel.enabled });
+    toggle.dataset.control = 'active';
     toggle.setAttribute('aria-label', `${channel.name} bekapcsolva`);
     toggle.onchange = () => updateChannel(channel.key, { enabled: toggle.checked ? undefined : false });
-    const badge = node('span', { className: `tag${channel.epg ? ' good' : ''}`,
-      textContent: channel.epg ? 'Párosítva' : '—', title: channel.epg?.id ?? '' });
-    row.append(node('td', {}, handle), node('td', {}, edit), node('td', {}, String(channel.number ?? '—')),
-      node('td', {}, channel.group), node('td', {}, badge), node('td', {}, String(channel.streams.length)), node('td', {}, toggle));
-    return row;
+    const group = groupSelect(channel.group);
+    group.className = 'row-group';
+    group.dataset.control = 'group';
+    group.setAttribute('aria-label', `Csoport – ${channel.name}`);
+    group.onchange = () => updateChannel(channel.key, { group: group.value === UNASSIGNED ? undefined : group.value });
+
+    const isExpanded = expandedEpg?.key === channel.key;
+    const epg = button(channel.epg ? 'Párosítva' : 'Párosítás', () => toggleRowEpg(channel),
+      `row-epg-button${channel.epg ? ' good' : ''}`);
+    epg.dataset.control = 'epg';
+    epg.title = channel.epg?.id ?? 'EPG hozzárendelése';
+    epg.setAttribute('aria-label', `EPG – ${channel.name}${channel.epg ? ` (${channel.epg.id})` : ''}`);
+    epg.setAttribute('aria-expanded', String(isExpanded));
+    if (isExpanded) epg.setAttribute('aria-controls', expandedEpg.row.id);
+    row.append(node('td', {}, handle), node('td', {}, edit), node('td', {}, rowNumber(channel)),
+      node('td', {}, group), node('td', {}, epg), node('td', {}, String(channel.streams.length)), node('td', {}, toggle));
+    return isExpanded ? [row, expandedEpg.row] : [row];
   });
   if (visibility === 'missing') for (const key of missing) {
     const override = project.channels[key] ?? {};
@@ -567,7 +691,16 @@ function render() {
   }
   rows.replaceChildren(...tableRows);
   byId('empty').hidden = tableRows.length > 0;
+  if (focusedRow && focused.dataset.control) {
+    const replacement = rowControl(focusedRow.dataset.channelKey, focused.dataset.control) ?? byId('search');
+    replacement.focus({ preventScroll: true });
+  } else if (expandedEpg?.row.contains(focused)) {
+    focused.focus({ preventScroll: true });
+  }
+  renderWarnings(channels);
+}
 
+function renderWarnings(channels) {
   const numbers = channels.filter(item => item.enabled && item.number !== null).map(item => item.number);
   const knownEpgIds = new Map();
   for (const source of epgSources().filter(item => project.epgSources.includes(item.id))) {

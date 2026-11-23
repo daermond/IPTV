@@ -97,8 +97,20 @@ td:last-child, th:last-child { text-align: center; }
 .channel-title { display: block; max-width: clamp(135px, 21vw, 340px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 650; }
 .logo { display: grid; place-items: center; width: 42px; height: 31px; border-radius: 4px; background: #f0f3f9; color: #56677f; overflow: hidden; font-size: 11px; font-weight: 700; }
 .logo img { height: 100%; width: 100%; object-fit: contain; padding: 3px; }
-.tag { display: inline-block; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: #edf2fa; color: #345074; }
-.tag.good { color: var(--green); background: #e8f5ee; }
+.row-number, .row-group, .row-epg-button { padding: 5px 7px; font-size: 13px; }
+.row-number { width: 4.6rem; font-variant-numeric: tabular-nums; }
+.row-group { width: clamp(100px, 13vw, 150px); text-overflow: ellipsis; }
+.row-epg-button { color: var(--blue); }
+.row-epg-button.good { color: var(--green); background: #e8f5ee; border-color: #d2e9dd; }
+.row-epg-button[aria-expanded="true"] { border-color: var(--blue); background: var(--mist); }
+.row-epg > td { padding: 13px 16px; text-align: left; white-space: normal; background: #f5f8fe; }
+.row-epg-form { max-width: 680px; }
+.row-epg-fields {
+  display: grid; grid-template-columns: minmax(130px, .9fr) minmax(155px, 1.2fr) auto;
+  gap: 10px; align-items: start;
+}
+.row-epg-fields > button { align-self: start; margin-top: 24px; }
+.row-epg-actions { display: flex; gap: 8px; margin-top: 9px; }
 .empty { padding: 10px 16px; color: var(--muted); }
 .warning, .published { margin: 12px 0 0; }
 input[type="checkbox"] { accent-color: var(--blue); width: 17px; height: 17px; cursor: pointer; }
@@ -138,4 +150,6 @@ legend { padding-inline: 5px; font-weight: 650; }
   .sort { margin-left: 0; }
   .toolbar input { flex-basis: 100%; }
   .two-fields { grid-template-columns: 1fr; }
+  .row-epg-fields { grid-template-columns: minmax(125px, 1fr); width: min(310px, 76vw); }
+  .row-epg-fields > button { justify-self: start; margin-top: 0; }
 }

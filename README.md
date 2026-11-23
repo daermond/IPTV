@@ -3,7 +3,7 @@
 Magyar IPTV-listák szerkesztése és frissítése GitHubon. A [webszerkesztő](https://daermond.github.io/IPTV/) projektjei a `projects/` mappában vannak. Az alapértelmezett lista az [Otthon M3U](https://daermond.github.io/IPTV/playlists/otthon.m3u).
 
 1. Nyisd meg a szerkesztőt, válassz projektet, vagy hozz létre újat.
-2. A csatorna nevére kattintva módosíthatod a nevét, számát, logóját, csoportját, elsődleges streamjét és EPG-hozzárendelését. Az **Aktív** jelölővel kapcsolhatod ki. Kézi sorrendben húzd a sort a fogantyúval, vagy használd a fel és le nyilat.
+2. A csatornaszámot és a csoportot közvetlenül a sorban módosíthatod. Az **EPG** oszlopban a **Párosítás** gomb a sor alatt nyitja meg a hozzárendelést. A csatorna nevére kattintva a neve, logója és elsődleges streamje is szerkeszthető. Az **Aktív** jelölővel kapcsolhatod ki. Kézi sorrendben húzd a sort a fogantyúval, vagy használd a fel és le nyilat.
 3. **Mentéskor** adj meg egy [fine-grained GitHub-tokent](https://github.com/settings/personal-access-tokens/new), amely csak erre a repóra kap **Contents: Read and write** jogosultságot. A token az oldal memóriájában marad. A mentés azonnal új futást indít, a kész M3U a sikeres közzététel után frissül.
 4. Add meg a kész M3U-címet a lejátszóban. Ha a lejátszó nem olvassa az EPG-címet a fejlécből, add hozzá külön a [magyar EPGShare URL-jét](https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz) a lejátszó EPG-beállításaiban.
 
