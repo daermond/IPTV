@@ -1,0 +1,370 @@
+#EXTM3U x-tvg-url="https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz"
+#EXTINF:-1 tvg-id="m1.HD.hu" tvg-name="M1 HD" group-title="Általános" tvg-logo="https://i.imgur.com/r4tgKZK.png",M1 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_m_1_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="m2.HD.hu" tvg-name="M2 (1080p)" group-title="Általános" tvg-logo="https://i.imgur.com/B0nYT0l.png",M2 (1080p)
+http://88.212.7.14/live/m2_hun/index.m3u8
+#EXTINF:-1 tvg-id="Duna.TV.hu" tvg-name="Duna" group-title="Általános" tvg-logo="https://i.imgur.com/oPbsSlp.png",Duna
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/duna_hun/index.m3u8
+#EXTINF:-1 tvg-id="Duna.World.hu" tvg-name="Duna World" group-title="Általános" tvg-logo="https://i.imgur.com/uOBQJZS.png",Duna World
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/duna_world_hun/index.m3u8
+#EXTINF:-1 tvg-id="RTL.hu" tvg-name="RTL" group-title="Általános" tvg-logo="https://i.imgur.com/ruRshE1.png",RTL
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_rtl_klub_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="TV2.hu" tvg-name="TV2" group-title="Általános" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/TV2_2008.svg/960px-TV2_2008.svg.png",TV2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_tv_2_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="Viasat.3.hu" tvg-name="Viasat 3" group-title="Általános" tvg-logo="https://i.imgur.com/ehx7R3A.png",Viasat 3
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/viasat3/index.m3u8
+#EXTINF:-1 tvg-id="Viasat.6.hu" tvg-name="Viasat 6" group-title="Általános" tvg-logo="https://i.imgur.com/kypSbFX.png",Viasat 6
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/viasat6/index.m3u8
+#EXTINF:-1 tvg-id="Viasat.2.hu" tvg-name="Viasat2" group-title="Általános" tvg-logo="https://i.imgur.com/lEAhKPa.png",Viasat2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/viasat2/index.m3u8
+#EXTINF:-1 tvg-id="Galaxy4.hu" tvg-name="Galaxy4" group-title="Általános" tvg-logo="https://i.imgur.com/fTG99xh.png",Galaxy4
+https://budapest-cache-1.antik.sk/live/test_galaxy_4_atk_1200/playlist.m3u8
+#EXTINF:-1 tvg-id="TV4.hu" tvg-name="TV4" group-title="Általános" tvg-logo="https://i.imgur.com/cjypCfu.png",TV4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_tv_4_hun_atk_1200/playlist.m3u8
+#EXTINF:-1 tvg-id="FEM3.hu@SD" tvg-name="FEM3" group-title="Általános" tvg-logo="https://i.imgur.com/AF4Sz8Z.png",FEM3
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_fem3_atktv/playlist.m3u8
+#EXTINF:-1 tvg-id="RTL.GOLD.hu" tvg-name="RTL Gold" group-title="Általános" tvg-logo="https://i.imgur.com/PwbLDUQ.png",RTL Gold
+https://budapest-cache-1.antik.sk/live/test_film_plus_2_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="RTL.HÁROM.hu" tvg-name="RTL Harom" group-title="Általános" tvg-logo="https://i.imgur.com/c4Hhhzs.png",RTL Harom
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_rtl_plus_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="RTL.KETTŐ.hu" tvg-name="RTL Ketto" group-title="Általános" tvg-logo="https://i.imgur.com/IVv0qrI.png",RTL Ketto
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_rtl2_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="Super.TV2.hu" tvg-name="Super TV2" group-title="Általános" tvg-logo="https://i.imgur.com/JCu1u2v.png",Super TV2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_super_tv2_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="TV2.Comedy.hu" tvg-name="TV2 Comedy" group-title="Általános" tvg-logo="https://i.imgur.com/B02hbcV.png",TV2 Comedy
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/tv2_comedy/index.m3u8
+#EXTINF:-1 tvg-id="m5.hu" tvg-name="M5 (1080p)" group-title="Általános" tvg-logo="https://i.imgur.com/y21wFd0.png",M5 (1080p)
+http://88.212.7.14/live/test_m_5_hun_atk_1200/playlist.m3u8
+#EXTINF:-1 tvg-id="m4.hu" tvg-name="M4 Sport (1080p)" group-title="Sport" tvg-logo="https://i.imgur.com/TQ4uJZk.png",M4 Sport (1080p)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/uatlmvixrr/index.m3u8
+#EXTINF:-1 tvg-id="Aréna4.hu" tvg-name="Arena4" group-title="Sport" tvg-logo="https://i.imgur.com/uAaQDr6.png",Arena4
+http://88.212.7.14/live/arena4/index.m3u8
+#EXTINF:-1 tvg-id="Match.4.hu" tvg-name="Match4 (1080p)" group-title="Sport" tvg-logo="https://i.imgur.com/hzexBLX.png",Match4 (1080p)
+http://141.94.193.53/Match4_HD/index.m3u8
+#EXTINF:-1 tvg-id="Sport1.hu" tvg-name="Sport 1" group-title="Sport" tvg-logo="https://i.imgur.com/X5X3tKC.png",Sport 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/sport1_hun/index.m3u8
+#EXTINF:-1 tvg-id="Sport2.hu" tvg-name="Sport 2" group-title="Sport" tvg-logo="https://i.imgur.com/UxflVoU.png",Sport 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/sport2_hun/index.m3u8
+#EXTINF:-1 tvg-id="Spíler1.TV.hu" tvg-name="Spiler 1" group-title="Sport" tvg-logo="https://i.imgur.com/pbk8c4x.png",Spiler 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/spiler1/index.m3u8
+#EXTINF:-1 tvg-id="Spíler2.TV.hu" tvg-name="Spiler 2" group-title="Sport" tvg-logo="https://i.imgur.com/1e0VsVH.png",Spiler 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/spiler2/index.m3u8
+#EXTINF:-1 tvg-id="Loversenykozvetites.hu@SD" tvg-name="Lóverseny közvetítés (420p)" group-title="Sport" tvg-logo="https://i.imgur.com/IGajR6G.png",Lóverseny közvetítés (420p)
+http://87.229.103.60:1935/liverelay/loverseny2.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="Spektrum.hu" tvg-name="Spektrum" group-title="Ismeretterjesztő" tvg-logo="https://i.imgur.com/GmFRQ82.png",Spektrum
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/spektrum_hun/index.m3u8
+#EXTINF:-1 tvg-id="National.Geographic.hu" tvg-name="National Geographic" group-title="Ismeretterjesztő" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png",National Geographic
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/ngc_hun/index.m3u8
+#EXTINF:-1 tvg-id="National.Geographic.Wild.hu" tvg-name="National Geographic Wild" group-title="Ismeretterjesztő" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png",National Geographic Wild
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/ngw_hun/index.m3u8
+#EXTINF:-1 tvg-id="Discovery.Channel.hu" tvg-name="Discovery Channel" group-title="Ismeretterjesztő" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png",Discovery Channel
+http://88.212.7.14/live/discovery_hungary/index.m3u8
+#EXTINF:-1 tvg-id="Viasat.History.hu" tvg-name="Viasat History" group-title="Ismeretterjesztő" tvg-logo="https://i.imgur.com/wRP9XA7.png",Viasat History
+http://193.33.39.108:9007/play/a00p
+#EXTINF:-1 tvg-id="Viasat.Nature.hu" tvg-name="Viasat Nature" group-title="Ismeretterjesztő" tvg-logo="https://i.imgur.com/ousRqqD.png",Viasat Nature
+http://193.33.39.108:9000/play/a05r
+#EXTINF:-1 tvg-id="Viasat.Explore.hu" tvg-name="Viasat Explore" group-title="Ismeretterjesztő" tvg-logo="https://i.imgur.com/DyT5pKB.png",Viasat Explore
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36
+http://205.237.104.26:8080/stream/345/index.m3u8
+#EXTINF:-1 tvg-id="History.Channel.hu" tvg-name="History" group-title="Ismeretterjesztő" tvg-logo="https://i.imgur.com/OWIK7FJ.png",History
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/history_hun/index.m3u8
+#EXTINF:-1 tvg-id="Animal.Planet.HD.hu" tvg-name="Animal Planet" group-title="Ismeretterjesztő" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/3/30/Animal_Planet_2018_II.svg/revision/latest?cb=20191206182106",Animal Planet
+http://88.212.7.14/live/animal_hun/index.m3u8
+#EXTINF:-1 tvg-id="OzoneTv.hu" tvg-name="Ozone TV" group-title="Ismeretterjesztő" tvg-logo="https://i.imgur.com/eSNF9qt.png",Ozone TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/ozone/index.m3u8
+#EXTINF:-1 tvg-id="ID:.Investigation.Discovery.hu" tvg-name="Investigation Discovery" group-title="Ismeretterjesztő" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/InvestigationDiscoveryLogo2020.svg/960px-InvestigationDiscoveryLogo2020.svg.png",Investigation Discovery
+http://88.212.7.14/live/id_hun/index.m3u8
+#EXTINF:-1 tvg-id="Mozi+.hu" tvg-name="Mozi+" group-title="Film" tvg-logo="https://i.imgur.com/LtCnPFJ.png",Mozi+
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/mozi_plusz/index.m3u8
+#EXTINF:-1 tvg-id="Film+.hu" tvg-name="Film+" group-title="Film" tvg-logo="https://i.imgur.com/OWqzJyy.png",Film+
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/film_plus_hun_atk/index.m3u8
+#EXTINF:-1 tvg-id="Film4.hu" tvg-name="Film4" group-title="Film" tvg-logo="https://i.imgur.com/X5N8CHf.png",Film4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/film4_hun/index.m3u8
+#EXTINF:-1 tvg-id="Max4.hu" tvg-name="MAX4 (1080p)" group-title="Film" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Max4_logo.png/960px-Max4_logo.png",MAX4 (1080p)
+http://141.94.193.53/MAX4_HD/index.m3u8
+#EXTINF:-1 tvg-id="Prime.hu" tvg-name="Prime" group-title="Film" tvg-logo="https://i.imgur.com/VvZEP4s.png",Prime
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/prime/index.m3u8
+#EXTINF:-1 tvg-id="AXNCrime.us@SD" tvg-name="AXN Crime" group-title="Film" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/13/AXNCRIME_2026_V_WHITE_VIOLET_RGB_HERO_01.svg/revision/latest?cb=20260808120407",AXN Crime
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/viasat_film/index.m3u8
+#EXTINF:-1 tvg-id="AXNSpin.hu@SD" tvg-name="AXN Spin" group-title="Film" tvg-logo="https://i.imgur.com/uVFenKm.png",AXN Spin
+#EXTVLCOPT:http-referrer=https://cool-tv.net/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18
+https://cronos.mangora1.cfd/spyn/usergencs85ja0j1rrnd.m3u8
+#EXTINF:-1 tvg-id="Cinemax.2.hu" tvg-name="Cinemax 2 Central Europe" group-title="Film" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Cinemax_2_%282016%29.png/960px-Cinemax_2_%282016%29.png",Cinemax 2 Central Europe
+http://193.33.39.108:9009/play/a024
+#EXTINF:-1 tvg-id="Cinemax.hu" tvg-name="Cinemax Central Europe" group-title="Film" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Cinemax_2016.svg/960px-Cinemax_2016.svg.png",Cinemax Central Europe
+http://193.33.39.108:9023/play/a01b
+#EXTINF:-1 tvg-id="Film.Mánia.hu" tvg-name="Film Mania" group-title="Film" tvg-logo="https://i.imgur.com/crhsomk.png",Film Mania
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36
+http://205.237.104.26:8080/stream/340/index.m3u8
+#EXTINF:-1 tvg-id="Moziklub.hu" tvg-name="Moziklub" group-title="Film" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Moziklub.svg/1920px-Moziklub.svg.png",Moziklub
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/moziklub_atk/index.m3u8
+#EXTINF:-1 tvg-id="Moziverzum.hu" tvg-name="Moziverzum" group-title="Film" tvg-logo="https://i.imgur.com/NMifecQ.png",Moziverzum
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/moziverzum/index.m3u8
+#EXTINF:-1 tvg-id="Film.Café.hu" tvg-name="Film Cafe" group-title="Film" tvg-logo="https://i.imgur.com/jaKRnzU.png",Film Cafe
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/film_cafe/index.m3u8
+#EXTINF:-1 tvg-id="Magyar.Mozi.TV.hu" tvg-name="Magyar Mozi TV" group-title="Film" tvg-logo="https://i.imgur.com/cXajs8V.png",Magyar Mozi TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/mozi/index.m3u8
+#EXTINF:-1 tvg-id="ATV.SPIRIT.hu" tvg-name="ATV Spirit (360p)" group-title="Film" tvg-logo="https://i.imgur.com/JINE5xS.png",ATV Spirit (360p)
+https://streamservers.atv.hu/atvliveedge/_definst_/atvstream_2_aac/playlist.m3u8
+#EXTINF:-1 tvg-id="Sorozat+.hu" tvg-name="Sorozat+" group-title="Film" tvg-logo="https://i.imgur.com/KsxWZIw.png",Sorozat+
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_sorozat_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="SorozatKlub.hu" tvg-name="Sorozatklub" group-title="Film" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Sorozatklub.svg/1920px-Sorozatklub.svg.png",Sorozatklub
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/sorozatklub_atk/index.m3u8
+#EXTINF:-1 tvg-id="Story4.hu" tvg-name="Story4" group-title="Film" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/c7/Story4_2026.svg/revision/latest?cb=20260903131013",Story4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_story_4_atk_1200/playlist.m3u8
+#EXTINF:-1 tvg-id="Story4.hu" tvg-name="Story4 Czechia" group-title="Film" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/5a/Story4_CZ_2026.svg/revision/latest?cb=20260905012248",Story4 Czechia
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/story_4_cze_atk/index.m3u8
+#EXTINF:-1 tvg-id="Film.Café.hu" tvg-name="Film Cafe Romania" group-title="Film" tvg-logo="https://i.imgur.com/jaKRnzU.png",Film Cafe Romania
+#EXTVLCOPT:http-referrer=https://cool-tv.net/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18
+https://atlantida1.aquax1.cfd/cofyfilm/usergendxn8lzrnd.m3u8
+#EXTINF:-1 tvg-id="Jocky.TV.hu" tvg-name="Jocky TV" group-title="Film" tvg-logo="https://i.imgur.com/wLawFVP.png",Jocky TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/jocky/index.m3u8
+#EXTINF:-1 tvg-id="Izaura.TV.hu" tvg-name="Izaura TV (1080p)" group-title="Film" tvg-logo="https://i.imgur.com/p9YFnpw.png",Izaura TV (1080p)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/izaura/index.m3u8
+#EXTINF:-1 tvg-id="TV.Paprika.hu" tvg-name="TV Paprika" group-title="Életmód" tvg-logo="https://i.imgur.com/KLpZIS6.png",TV Paprika
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/parpika_hun/index.m3u8
+#EXTINF:-1 tvg-id="TV2.Séf.hu" tvg-name="TV2 Sef" group-title="Életmód" tvg-logo="https://i.imgur.com/8GFj3XP.png",TV2 Sef
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_lichi_tv_atk_tv/playlist.m3u8
+#EXTINF:-1 tvg-id="Food.Network.hu" tvg-name="Food Network" group-title="Életmód" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Food_Network_New_Logo.png/960px-Food_Network_New_Logo.png",Food Network
+http://88.212.7.14/live/fn_hungary/index.m3u8
+#EXTINF:-1 tvg-id="Travel.Channel.HD.hu" tvg-name="Travel Channel" group-title="Életmód" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/a/a3/Travel_Channel_2D_2014.svg/revision/latest?cb=20180112215118",Travel Channel
+http://88.212.7.14/live/travel_hun/index.m3u8
+#EXTINF:-1 tvg-id="RTL.OTTHON.hu" tvg-name="RTL Otthon" group-title="Életmód" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/RTL_Otthon.svg/1920px-RTL_Otthon.svg.png",RTL Otthon
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/rtl_otthon_atk/index.m3u8
+#EXTINF:-1 tvg-id="Spektrum.Home.hu" tvg-name="Spektrum Home" group-title="Életmód" tvg-logo="https://i.imgur.com/VaVi65F.png",Spektrum Home
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/spektrum_home_hun/index.m3u8
+#EXTINF:-1 tvg-id="TLC.hu" tvg-name="TLC" group-title="Életmód" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/TLC_Logo.svg/960px-TLC_Logo.svg.png",TLC
+http://88.212.7.14/live/tlc_hungary/index.m3u8
+#EXTINF:-1 tvg-id="HGTV.hu" tvg-name="HGTV" group-title="Életmód" tvg-logo="https://i.imgur.com/KMcR9z9.png",HGTV
+http://88.212.7.14/live/hgtv_hun/index.m3u8
+#EXTINF:-1 tvg-id="LifeTv.hu" tvg-name="Life TV" group-title="Életmód" tvg-logo="https://i.imgur.com/3znYv1N.png",Life TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/lifetv/index.m3u8
+#EXTINF:-1 tvg-id="Fishing.and.Hunting.Channel.hu" tvg-name="The Fishing & Hunting Channel" group-title="Életmód" tvg-logo="https://i.imgur.com/KcTTnUA.png",The Fishing & Hunting Channel
+http://88.212.7.14/live/test_fishing_hunting/playlist.m3u8
+#EXTINF:-1 tvg-id="Fishing.and.Hunting.Channel.hu" tvg-name="The Fishing & Hunting Channel HD" group-title="Életmód" tvg-logo="https://i.imgur.com/KcTTnUA.png",The Fishing & Hunting Channel HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/fishing_hun/index.m3u8
+#EXTINF:-1 tvg-id="Disney.Channel.hu" tvg-name="Disney Channel" group-title="Gyerek" tvg-logo="https://i.imgur.com/aOa73uT.png",Disney Channel
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/disney_channel_hun/index.m3u8
+#EXTINF:-1 tvg-id="Nickelodeon.hu" tvg-name="Nickelodeon" group-title="Gyerek" tvg-logo="https://i.imgur.com/fXs8f6a.png",Nickelodeon
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_nickelodeon_hu_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="Nick.Jr..hu" tvg-name="Nick Jr." group-title="Gyerek" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nick_Jr._logo_2023_(outline).svg/960px-Nick_Jr._logo_2023_(outline).svg.png",Nick Jr.
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/nick_junior_hun/index.m3u8
+#EXTINF:-1 tvg-id="Minimax.hu" tvg-name="Minimax" group-title="Gyerek" tvg-logo="https://i.imgur.com/WWOlm1x.png",Minimax
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/minimax_hun/index.m3u8
+#EXTINF:-1 tvg-id="TV2.Kids.hu" tvg-name="TV2 Kids" group-title="Gyerek" tvg-logo="https://i.imgur.com/Zltlezm.png",TV2 Kids
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/tv2_kids/index.m3u8
+#EXTINF:-1 tvg-id="JimJam.hu" tvg-name="JimJam" group-title="Gyerek" tvg-logo="https://i.imgur.com/ODhkYyx.png",JimJam
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/jim_jam_hun/index.m3u8
+#EXTINF:-1 tvg-id="Kölyökklub.hu" tvg-name="Kolyokklub" group-title="Gyerek" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/K%C3%B6ly%C3%B6kklub_II.svg/1920px-K%C3%B6ly%C3%B6kklub_II.svg.png",Kolyokklub
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/kolyokklub_atk/index.m3u8
+#EXTINF:-1 tvg-id="Nicktoons.hu" tvg-name="Nicktoons" group-title="Gyerek" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d8/Nicktoons_UK_Logo_2014.png",Nicktoons
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+http://88.212.7.14/live/nicktoons_hungary/index.m3u8
+#EXTINF:-1 tvg-id="ATV.hu" tvg-name="ATV (160p)" group-title="Hírek" tvg-logo="https://i.imgur.com/85sIvrX.png",ATV (160p)
+https://streamservers.atv.hu/atvlive/atvstream_1_aac/playlist.m3u8
+#EXTINF:-1 tvg-id="HtMusicChannel.hu@SD" tvg-name="H!T Music Channel (480p)" group-title="Zene" tvg-logo="https://i.imgur.com/sqC2hqV.png",H!T Music Channel (480p)
+http://hitmusic.hu/hitmusic.m3u8
+#EXTINF:-1 tvg-id="OxygenMusic.hu@HD" tvg-name="Oxygen Music (1080p)" group-title="Zene" tvg-logo="https://oxygenmusic.hu/static/media/logo.png",Oxygen Music (1080p)
+https://oxygenmusic.hu:2443/hls/oxygenmusic.m3u8
+#EXTINF:-1 tvg-id="Sláger.TV.hu" tvg-name="Slager TV" group-title="Zene" tvg-logo="https://i.imgur.com/qDNRgSQ.png",Slager TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_slager_tv_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="Zenebutik.hu" tvg-name="Zenebutik" group-title="Zene" tvg-logo="https://i.imgur.com/xGUlF78.png",Zenebutik
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/zenebutik/index.m3u8
+#EXTINF:-1 tvg-id="Muzsika.TV.hu" tvg-name="Muzsika TV" group-title="Zene" tvg-logo="https://i.imgur.com/kmQ5vYC.png",Muzsika TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/test_muzsika_hungary_1200_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="Dikh.TV.hu" tvg-name="Dikh TV" group-title="Zene" tvg-logo="https://i.imgur.com/aAcORTL.png",Dikh TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://88.212.7.14/live/dikh/index.m3u8
+#EXTINF:-1 tvg-id="16tvBudapest.hu@SD" tvg-name="16tv Budapest (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/04fCzHl.png",16tv Budapest (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/16tv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="AlfoldTV.hu@SD" tvg-name="Alföld TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/W6jg8iM.png",Alföld TV (1080p)
+https://cloudfront41.lexanetwork.com:1344/relay01/livestream006.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="Apostol.TV.hu" tvg-name="Apostol TV (576p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/C43Cc9N.png",Apostol TV (576p)
+https://live.apostoltv.hu/live/playlist.m3u8
+#EXTINF:-1 tvg-id="BTV.hu@SD" tvg-name="Bábolnai TV (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/0PKqn3V.png",Bábolnai TV (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/babolnatv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="BajaiTV.hu@SD" tvg-name="Bajai TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/cyReGWh.png",Bajai TV (720p)
+https://cloudfront41.lexanetwork.com:1344/relay01/livestream002.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="Balaton.TV.hu" tvg-name="Balaton TV (432p)" group-title="Helyi TV" tvg-logo="https://balatontelevizio.hu/wp-content/uploads/2020/05/balaton_tv_logo.png",Balaton TV (432p)
+https://stream.iptvservice.eu/hls/balatontv.m3u8
+#EXTINF:-1 tvg-id="BerenteTV.hu@SD" tvg-name="Berente TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/3H3Ct9f.png",Berente TV (1080p)
+https://stream.streaming4u.hu/BerenteTV/index.m3u8
+#EXTINF:-1 tvg-id="BudapestEuropaTelevizio.hu@SD" tvg-name="Budapest Európa Televízió (576p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/CqqWtzo.png",Budapest Európa Televízió (576p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/bpetv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="CityTV.hu@SD" tvg-name="City TV" group-title="Helyi TV" tvg-logo="https://i.imgur.com/u0AKhzj.png",City TV
+https://citytv.hu/playlist.m3u8
+#EXTINF:-1 tvg-id="CsurgoTV.hu@SD" tvg-name="Csurgo TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/vVOEYuj.png",Csurgo TV (720p)
+https://cstv.medialivecdn.hu/csurgotv/27725804dc13aa23b3970414524d2dbf.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="DaruTV.hu@SD" tvg-name="Daru TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/0P7QHde.png",Daru TV (720p)
+https://5cd03f21c7193.streamlock.net/darutv/darutvlive/playlist.m3u8
+#EXTINF:-1 tvg-id="DSTV.hu@SD" tvg-name="DSTV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/xKJoN8L.png",DSTV (720p)
+http://79.120.178.90:1935/dstv/dstvlive/playlist.m3u8
+#EXTINF:-1 tvg-id="DTV.hu@SD" tvg-name="DTV (720p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/YSpqmSO.png",DTV (720p) [Not 24/7]
+http://cloudfront44.lexanetwork.com:1732/hlsrelay003/hls/livestream.sdp.m3u8
+#EXTINF:-1 tvg-id="EgykerTV.hu@SD" tvg-name="Elsö Kerület TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/yhMhvPq.png",Elsö Kerület TV (1080p)
+https://iptv01.eurocable.co.hu/EC-EGYKERTVHD/index.m3u8
+#EXTINF:-1 tvg-id="ESTV.hu@SD" tvg-name="ESTV (420p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/OCZ8CfK.png",ESTV (420p)
+https://cloudfront44.lexanetwork.com:1344/relay01/HDE032.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="EWTNBonumTV.hu@SD" tvg-name="EWTN/Bonum TV" group-title="Helyi TV" tvg-logo="https://i.imgur.com/LdsRz2E.png",EWTN/Bonum TV
+https://dash2.antik.sk/live/ewtn_bonum/index.m3u8
+#EXTINF:-1 tvg-id="FehervarTV.hu@SD" tvg-name="Fehérvár TV (360p)" group-title="Helyi TV" tvg-logo="https://www.fehervartv.hu/css/img/icon-1-2.png",Fehérvár TV (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/fehervartv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="FIXTV.hu@SD" tvg-name="Fix TV (720p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/PLhh0Ps.png",Fix TV (720p) [Not 24/7]
+https://fixhd.tv:8082/fix/1080i/playlist.m3u8
+#EXTINF:-1 tvg-id="GloboTV.hu@SD" tvg-name="Globo TV (720p) [Geo-blocked]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/PJ4c4jq.png",Globo TV (720p) [Geo-blocked]
+https://stream.streaming4u.hu/GloboTV/index.m3u8
+#EXTINF:-1 tvg-id="GolyaTV.hu@SD" tvg-name="Gólya TV (480p) [Geo-blocked]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/TeK6Pzb.png",Gólya TV (480p) [Geo-blocked]
+https://stream.streaming4u.hu/GolyaTV/index.m3u8
+#EXTINF:-1 tvg-id="GranTV.hu@SD" tvg-name="Gran TV (720p)" group-title="Helyi TV" tvg-logo="https://i.ibb.co/qJN7Qh2/gran-kicsi.png",Gran TV (720p)
+https://stream.medialive.hu/gran/grantvlive/playlist.m3u8
+#EXTINF:-1 tvg-id="GyongyosiTV.hu@SD" tvg-name="Gyongyosi TV (420p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/RHgaPCk.png",Gyongyosi TV (420p)
+https://cloudfront44.lexanetwork.com:1344/relay44_1/HDE043.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="HalomTV.hu@SD" tvg-name="Halom TV (576i)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/x8shi7l.png",Halom TV (576i)
+rtmp://212.92.13.108/live/livestream1
+#EXTINF:-1 tvg-id="HangulatTV.hu@SD" tvg-name="Hangulat TV (720p)" group-title="Helyi TV" tvg-logo="https://play-lh.googleusercontent.com/uBasB1USS1zI0tdHUbhUg356TwmworMA5P_7UGnhvg3z6LXX6n1bEk7Qj3cE3-yuToA",Hangulat TV (720p)
+https://iptv01.eurocable.co.hu/EC-HANGULATTV/index.m3u8
+#EXTINF:-1 tvg-id="HegyvidekTV.hu@SD" tvg-name="Hegyvidek TV" group-title="Helyi TV" tvg-logo="https://i.imgur.com/t5bw1J1.png",Hegyvidek TV
+https://iptv02.eurocable.co.hu:15400/EC-HEGYVIDEKTV-FTA/index.m3u8
+#EXTINF:-1 tvg-id="HeviziTV.hu@SD" tvg-name="Hévízi TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/zuWQKDm.png",Hévízi TV (1080p)
+https://cloudfront44.lexanetwork.com:1344/relay03/livestream003.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="JaszsagiTersegiTV.hu@SD" tvg-name="Jászsági Térségi TV (440p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/bsDN0lH.png",Jászsági Térségi TV (440p)
+https://cloudfront44.lexanetwork.com:1344/relay01/broadcast007.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="KanizsaTV.hu@SD" tvg-name="Kanizsa TV (400p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/l02znlE.png",Kanizsa TV (400p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/kanizsavtv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="KaposTV.hu@SD" tvg-name="Kapos TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/ZMrj2C5.png",Kapos TV (1080p)
+https://cloudfront63.lexanetwork.com:1344/relay01/livestream004.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="KarcagTV.hu@SD" tvg-name="Karcag TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/QcrVj3Q.png",Karcag TV (720p)
+https://cloudfront41.lexanetwork.com:1344/relay03/livestream003.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="KecskemetiTV.hu@SD" tvg-name="Kecskemeti TV (416p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/yxwrX2N.png",Kecskemeti TV (416p) [Not 24/7]
+http://rtmp1.40e.hu:8000/live/ktv.m3u8
+#EXTINF:-1 tvg-id="KiskorosTV.hu@SD" tvg-name="Kiskőrös TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/Y74Mve1.png",Kiskőrös TV (720p)
+https://5cd03f21c7193.streamlock.net/kiskorostv/korostvlive/playlist.m3u8
+#EXTINF:-1 tvg-id="KomaromiTelevizio.hu@SD" tvg-name="Komáromi Televízió (400p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/DifVZkz.png",Komáromi Televízió (400p)
+https://cloudfront44.lexanetwork.com:1344/relay01/HDE017.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="KomlosTV.hu@SD" tvg-name="Komlós TV (1080p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/dnITSUz.png",Komlós TV (1080p) [Not 24/7]
+https://stream.streaming4u.hu/KomlosTV/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="LiceumTV.hu@SD" tvg-name="Liceum TV (576p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/Hf122ZD.png",Liceum TV (576p)
+http://193.225.32.62:8890/live.m3u8
+#EXTINF:-1 tvg-id="MakoiVarosiTelevizio.hu@SD" tvg-name="Makói Városi (576p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/PF3BP4X.png",Makói Városi (576p)
+http://makomedia.mikrohalo.hu/hls/makotv.m3u8
+#EXTINF:-1 tvg-id="MezokovesdiTelevizio.hu@SD" tvg-name="Mezőkövesdi Televízió (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/2zCOXmH.png",Mezőkövesdi Televízió (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/mezokovesdvtv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="MoraNetTV.hu@SD" tvg-name="Móra-Net TV (576p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/yT0RmKi.png",Móra-Net TV (576p)
+https://stream.moranettv.hu/live/index.m3u8
+#EXTINF:-1 tvg-id="OroszlanyiVarosiTelevizio.hu@SD" tvg-name="Oroszlányi Városi Televízió (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/P0fxUH5.png",Oroszlányi Városi Televízió (720p)
+https://cloudfront44.lexanetwork.com:1344/relay01/broadcast002.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="OrszaggyulesOGYplenaris.hu@SD" tvg-name="Országgyűlés (Plenáris) (720p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/hbblRpZ.png",Országgyűlés (Plenáris) (720p) [Not 24/7]
+http://plenaris.parlament.hu:1935/edgelive/smil:mkogyplen.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="OrszaggyulesOGYTAB.hu@SD" tvg-name="Országgyűlés (Törvényalkotási bizottság) (720p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/hbblRpZ.png",Országgyűlés (Törvényalkotási bizottság) (720p) [Not 24/7]
+http://tab.parlament.hu:1935/edgelive/smil:mkogytab.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="OzdiVarosiTV.hu@SD" tvg-name="Ózdi Városi TV (720p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/t0Aq3UD.png",Ózdi Városi TV (720p) [Not 24/7]
+http://stream.nmih.hu:7980/live.m3u8
+#EXTINF:-1 tvg-id="PannonTV.rs@SD" tvg-name="Pannon RTV (648p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/xQa2idL.png",Pannon RTV (648p)
+https://stream.nmih.hu:4102/live.m3u8
+#EXTINF:-1 tvg-id="PilisTV.hu@SD" tvg-name="PilisTV (1080p) [Geo-blocked]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/5L01wRi.png",PilisTV (1080p) [Geo-blocked]
+https://stream.streaming4u.hu/PilisTV/index.m3u8
+#EXTINF:-1 tvg-id="PVTV.hu@SD" tvg-name="Putnok Városi TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/eKXPBFb.png",Putnok Városi TV (720p)
+http://78.47.126.198:5080/LiveApp/streams/902003217052313577741820.m3u8?token=null
+#EXTINF:-1 tvg-id="RakosmenteTV.hu@SD" tvg-name="Rákosmente TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/n39a2DT.png",Rákosmente TV (720p)
+http://rakosmentetv.hu:8080/hls/rmtv.m3u8
+#EXTINF:-1 tvg-id="RegioPluszTV.hu@SD" tvg-name="RégióPlusz TV (1080p) [Geo-blocked]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/VXPpukf.png",RégióPlusz TV (1080p) [Geo-blocked]
+https://stream.streaming4u.hu/RegioPluszTV/index.m3u8
+#EXTINF:-1 tvg-id="SIXOTV.hu@SD" tvg-name="SIXO TV (360p)" group-title="Helyi TV" tvg-logo="https://i.ibb.co/GTPs9Xy/9068.png",SIXO TV (360p)
+https://cloudfront44.lexanetwork.com:1344/relay01/HDE038.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="SoltvadkertiTelevizio.hu@SD" tvg-name="Soltvadkerti Televízió (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/ihdk45P.png",Soltvadkerti Televízió (720p)
+http://79.120.178.90:1935/soltvadkerttv/soltvlive/playlist.m3u8
+#EXTINF:-1 tvg-id="SzecsenyTV.hu@SD" tvg-name="Szécsény TV (720p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/ilRmZtF.png",Szécsény TV (720p)
+http://iptv.eurocable.co.hu/EC-SZECSENYTVHD/index.m3u8
+#EXTINF:-1 tvg-id="SzolnokTV.hu@SD" tvg-name="Szolnok TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/Eiab9MP.png",Szolnok TV (1080p)
+https://cloudfront44.lexanetwork.com:1344/relay01/livestream004.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="TataiTV.hu@SD" tvg-name="Tatai TV (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/skXYntc.png",Tatai TV (1080p)
+https://cloudfront44.lexanetwork.com:1344/relay01/broadcast006.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="Telepaks.hu" tvg-name="TelePaks (396p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/T8ueztB.png",TelePaks (396p)
+https://cloudfront44.lexanetwork.com:1344/relay02/livestream004.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="TiszaTV.hu@SD" tvg-name="Tisza TV (576p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/Q2bShnh.png",Tisza TV (576p) [Not 24/7]
+https://www.tiszatv.hu/onlinetv/tiszatv_1.m3u8
+#EXTINF:-1 tvg-id="TrimedioTV.hu@SD" tvg-name="Trimedio TV (1080p) [Geo-blocked]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/P4hxWVZ.png",Trimedio TV (1080p) [Geo-blocked]
+https://stream.streaming4u.hu/TriMedioTV/index.m3u8
+#EXTINF:-1 tvg-id="7TV.hu@SD" tvg-name="TV7 Bekescsaba (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/CnUhAlK.png",TV7 Bekescsaba (360p)
+https://stream.y5.hu/stream/stream_bekescsaba/stream.m3u8
+#EXTINF:-1 tvg-id="TVBudakalasz.hu@SD" tvg-name="TV Budakalasz (1080p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/97xpqt0.png",TV Budakalasz (1080p) [Not 24/7]
+https://stream.streaming4u.hu/TVBudakalasz/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="TVEger.hu@SD" tvg-name="TV Eger (1080p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/GUVW073.png",TV Eger (1080p)
+http://stream.tveger.hu:8010/live.m3u8
+#EXTINF:-1 tvg-id="TVKeszthely.hu@SD" tvg-name="TV Keszthely (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/2LE8xSW.png",TV Keszthely (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/keszthelyivtv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="TVSzentendre.hu@SD" tvg-name="TV Szentendre (1080p) [Geo-blocked]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/kzzYLdj.png",TV Szentendre (1080p) [Geo-blocked]
+https://stream.streaming4u.hu/TVSzentendre/index.m3u8
+#EXTINF:-1 tvg-id="VasarhelyiTelevizio.hu@SD" tvg-name="Vásárhelyi Televízió (576p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/WOEqdmx.png",Vásárhelyi Televízió (576p)
+https://stream.vasarhelyitelevizio.hu/stream/stream.m3u8
+#EXTINF:-1 tvg-id="VolgyhidTV.hu@SD" tvg-name="Völgyhíd TV (540p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/9krKKgU.png",Völgyhíd TV (540p)
+https://5cd03f21c7193.streamlock.net/volgyhidtv/mediakft/playlist.m3u8
+#EXTINF:-1 tvg-id="VTVFuzesabony.hu@SD" tvg-name="VTV Füzesabony (720p) [Not 24/7]" group-title="Helyi TV" tvg-logo="https://i.imgur.com/IoHyW7w.png",VTV Füzesabony (720p) [Not 24/7]
+https://stream.nmih.hu:7962/live.m3u8
+#EXTINF:-1 tvg-id="VTVMor.hu@SD" tvg-name="VTV Mór (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/x8jstsh.png",VTV Mór (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/morvtv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="WilliamsTV.hu@SD" tvg-name="Williams TV (480p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/vysX07C.png",Williams TV (480p)
+http://79.120.178.90:1935/williams/williamstv/playlist.m3u8
+#EXTINF:-1 tvg-id="XVTV.hu@SD" tvg-name="XV TV (480p)" group-title="Helyi TV" tvg-logo="https://i.ibb.co/hH2KF6W/4792.png",XV TV (480p)
+https://cloudfront44.lexanetwork.com:1344/relay01/HDE051.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="ZalaegerszegiTV.hu@SD" tvg-name="Zalaegerszegi TV (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/MLVPf0i.png",Zalaegerszegi TV (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/zegtv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="ZugloTV.hu@SD" tvg-name="Zuglo TV (360p)" group-title="Helyi TV" tvg-logo="https://i.imgur.com/wPqCtwR.png",Zuglo TV (360p)
+https://cloudfront44.lexanetwork.com:1344/freerelay/zuglotv.sdp/playlist.m3u8
