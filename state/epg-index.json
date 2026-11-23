@@ -1,0 +1,779 @@
+{
+  "https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz": {
+    "checked": "2026-11-23",
+    "channels": [
+      {
+        "id": "360TuneBox.hu",
+        "name": "360TuneBox"
+      },
+      {
+        "id": "3Sat.hu",
+        "name": "3Sat"
+      },
+      {
+        "id": "AMC.hu",
+        "name": "AMC"
+      },
+      {
+        "id": "ARD1.hu",
+        "name": "ARD1"
+      },
+      {
+        "id": "ATV.SPIRIT.hu",
+        "name": "ATV SPIRIT"
+      },
+      {
+        "id": "ATV.hu",
+        "name": "ATV"
+      },
+      {
+        "id": "AXN.hu",
+        "name": "AXN"
+      },
+      {
+        "id": "Al.Jazeera.hu",
+        "name": "Al Jazeera"
+      },
+      {
+        "id": "Animal.Planet.HD.hu",
+        "name": "Animal Planet HD"
+      },
+      {
+        "id": "Apostol.TV.hu",
+        "name": "Apostol TV"
+      },
+      {
+        "id": "Arte.hu",
+        "name": "Arte"
+      },
+      {
+        "id": "Aréna4.hu",
+        "name": "Aréna4"
+      },
+      {
+        "id": "Auto.Motor.Sport.TV.hu",
+        "name": "Auto Motor Sport TV"
+      },
+      {
+        "id": "BBC.Earth.hu",
+        "name": "BBC Earth"
+      },
+      {
+        "id": "Baby.TV.hu",
+        "name": "Baby TV"
+      },
+      {
+        "id": "Babyfirst.hu",
+        "name": "Babyfirst"
+      },
+      {
+        "id": "Balaton.TV.hu",
+        "name": "Balaton TV"
+      },
+      {
+        "id": "Bonum.TV.hu",
+        "name": "Bonum TV"
+      },
+      {
+        "id": "Brazzers.TV.Europe.hu",
+        "name": "Brazzers TV Europe"
+      },
+      {
+        "id": "CNN.hu",
+        "name": "CNN"
+      },
+      {
+        "id": "Canal+.Action.hu",
+        "name": "Canal+ Action"
+      },
+      {
+        "id": "Cartoon.Network.hu",
+        "name": "Cartoon Network"
+      },
+      {
+        "id": "Cartoonito.hu",
+        "name": "Cartoonito"
+      },
+      {
+        "id": "Cinemax.2.hu",
+        "name": "Cinemax 2"
+      },
+      {
+        "id": "Cinemax.hu",
+        "name": "Cinemax"
+      },
+      {
+        "id": "Club.MTV.hu",
+        "name": "Club MTV"
+      },
+      {
+        "id": "Comedy.Central.hu",
+        "name": "Comedy Central"
+      },
+      {
+        "id": "Cool.TV.hu",
+        "name": "Cool TV"
+      },
+      {
+        "id": "Crime.+.Investigation.hu",
+        "name": "Crime + Investigation"
+      },
+      {
+        "id": "D1.hu",
+        "name": "D1"
+      },
+      {
+        "id": "Da.Vinci.Tv.hu",
+        "name": "Da Vinci Tv"
+      },
+      {
+        "id": "Deutsche.Welle.hu",
+        "name": "Deutsche Welle"
+      },
+      {
+        "id": "Dikh.TV.hu",
+        "name": "Dikh TV"
+      },
+      {
+        "id": "Discovery.Channel.hu",
+        "name": "Discovery Channel"
+      },
+      {
+        "id": "Discovery.Turbo.Xtra.hu",
+        "name": "Discovery Turbo Xtra"
+      },
+      {
+        "id": "Disney.Channel.hu",
+        "name": "Disney Channel"
+      },
+      {
+        "id": "Docubox.hu",
+        "name": "Docubox"
+      },
+      {
+        "id": "Duck.Tv.hu",
+        "name": "Duck Tv"
+      },
+      {
+        "id": "Duna.TV.hu",
+        "name": "Duna TV"
+      },
+      {
+        "id": "Duna.World.hu",
+        "name": "Duna World"
+      },
+      {
+        "id": "English.Club.TV.hu",
+        "name": "English Club TV"
+      },
+      {
+        "id": "Epic.Drama.hu",
+        "name": "Epic Drama"
+      },
+      {
+        "id": "Eroxxx.HD.hu",
+        "name": "Eroxxx HD"
+      },
+      {
+        "id": "Euronews.hu",
+        "name": "Euronews"
+      },
+      {
+        "id": "Eurosport.2.HD.hu",
+        "name": "Eurosport 2 HD"
+      },
+      {
+        "id": "Eurosport.4K.hu",
+        "name": "Eurosport 4K"
+      },
+      {
+        "id": "Eurosport.HD.hu",
+        "name": "Eurosport HD"
+      },
+      {
+        "id": "Extreme.Sports.hu",
+        "name": "Extreme Sports"
+      },
+      {
+        "id": "FTV.HD.hu",
+        "name": "FTV HD"
+      },
+      {
+        "id": "Fashion.TV.Europe.hu",
+        "name": "Fashion TV Europe"
+      },
+      {
+        "id": "Fashionbox.hu",
+        "name": "Fashionbox"
+      },
+      {
+        "id": "FightBox.hu",
+        "name": "FightBox"
+      },
+      {
+        "id": "Film+.hu",
+        "name": "Film+"
+      },
+      {
+        "id": "Film.Café.hu",
+        "name": "Film Café"
+      },
+      {
+        "id": "Film.Mánia.hu",
+        "name": "Film Mánia"
+      },
+      {
+        "id": "Film4.hu",
+        "name": "Film4"
+      },
+      {
+        "id": "FilmBox.Prémium.hu",
+        "name": "FilmBox Prémium"
+      },
+      {
+        "id": "FilmBox.Stars.hu",
+        "name": "FilmBox Stars"
+      },
+      {
+        "id": "Filmbox.Arthouse.hu",
+        "name": "Filmbox Arthouse"
+      },
+      {
+        "id": "Filmbox.Extra.HD.hu",
+        "name": "Filmbox Extra HD"
+      },
+      {
+        "id": "Filmbox.Family.hu",
+        "name": "Filmbox Family"
+      },
+      {
+        "id": "Filmbox.hu",
+        "name": "Filmbox"
+      },
+      {
+        "id": "Fishing.and.Hunting.Channel.hu",
+        "name": "Fishing and Hunting Channel"
+      },
+      {
+        "id": "Fit.HD.hu",
+        "name": "Fit HD"
+      },
+      {
+        "id": "Food.Network.hu",
+        "name": "Food Network"
+      },
+      {
+        "id": "FunBox.UHD.hu",
+        "name": "FunBox UHD"
+      },
+      {
+        "id": "Galaxy4.hu",
+        "name": "Galaxy4"
+      },
+      {
+        "id": "Gametoon.hu",
+        "name": "Gametoon"
+      },
+      {
+        "id": "Ginx.hu",
+        "name": "Ginx"
+      },
+      {
+        "id": "HBO.2.hu",
+        "name": "HBO 2"
+      },
+      {
+        "id": "HBO.3.hu",
+        "name": "HBO 3"
+      },
+      {
+        "id": "HBO.hu",
+        "name": "HBO"
+      },
+      {
+        "id": "HGTV.hu",
+        "name": "HGTV"
+      },
+      {
+        "id": "HIR.TV.hu",
+        "name": "HIR TV"
+      },
+      {
+        "id": "HRT-1.hu",
+        "name": "HRT-1"
+      },
+      {
+        "id": "HRT-2.hu",
+        "name": "HRT-2"
+      },
+      {
+        "id": "Hatos.csatorna.hu",
+        "name": "Hatos csatorna"
+      },
+      {
+        "id": "Heti.Tv.hu",
+        "name": "Heti Tv"
+      },
+      {
+        "id": "History.Channel.hu",
+        "name": "History Channel"
+      },
+      {
+        "id": "History2.hu",
+        "name": "History2"
+      },
+      {
+        "id": "Hustler.TV.hu",
+        "name": "Hustler TV"
+      },
+      {
+        "id": "ID:.Investigation.Discovery.hu",
+        "name": "ID: Investigation Discovery"
+      },
+      {
+        "id": "Izaura.TV.hu",
+        "name": "Izaura TV"
+      },
+      {
+        "id": "JazzTV.hu",
+        "name": "JazzTV"
+      },
+      {
+        "id": "JimJam.hu",
+        "name": "JimJam"
+      },
+      {
+        "id": "Jocky.TV.hu",
+        "name": "Jocky TV"
+      },
+      {
+        "id": "Kika.hu",
+        "name": "Kika"
+      },
+      {
+        "id": "Kölyökklub.hu",
+        "name": "Kölyökklub"
+      },
+      {
+        "id": "LifeTv.hu",
+        "name": "LifeTv"
+      },
+      {
+        "id": "Love.Nature.hu",
+        "name": "Love Nature"
+      },
+      {
+        "id": "M3.hu",
+        "name": "M3"
+      },
+      {
+        "id": "MEZZO.hu",
+        "name": "MEZZO"
+      },
+      {
+        "id": "MEZZOHD.hu",
+        "name": "MEZZOHD"
+      },
+      {
+        "id": "MR1-Kossuth.hu",
+        "name": "MR1-Kossuth"
+      },
+      {
+        "id": "MR2-Petőfi.hu",
+        "name": "MR2-Petőfi"
+      },
+      {
+        "id": "MR3-Bartók.hu",
+        "name": "MR3-Bartók"
+      },
+      {
+        "id": "MR4-Nemzetiségi.hu",
+        "name": "MR4-Nemzetiségi"
+      },
+      {
+        "id": "MR6-Dankó.hu",
+        "name": "MR6-Dankó"
+      },
+      {
+        "id": "MTV.00's.hu",
+        "name": "MTV 00's"
+      },
+      {
+        "id": "MTV.80's.hu",
+        "name": "MTV 80's"
+      },
+      {
+        "id": "MTV.90's.hu",
+        "name": "MTV 90's"
+      },
+      {
+        "id": "MTV.Euro.hu",
+        "name": "MTV Euro"
+      },
+      {
+        "id": "MTV.Hits.hu",
+        "name": "MTV Hits"
+      },
+      {
+        "id": "MTV.Hungary.hu",
+        "name": "MTV Hungary"
+      },
+      {
+        "id": "MTV.Live.HD.hu",
+        "name": "MTV Live HD"
+      },
+      {
+        "id": "Magyar.Mozi.TV.hu",
+        "name": "Magyar Mozi TV"
+      },
+      {
+        "id": "Match.4.hu",
+        "name": "Match 4"
+      },
+      {
+        "id": "Max4.hu",
+        "name": "Max4"
+      },
+      {
+        "id": "Mezzo.hu",
+        "name": "Mezzo"
+      },
+      {
+        "id": "Minimax.hu",
+        "name": "Minimax"
+      },
+      {
+        "id": "Motorvision.TV.hu",
+        "name": "Motorvision TV"
+      },
+      {
+        "id": "Mozi+.hu",
+        "name": "Mozi+"
+      },
+      {
+        "id": "Moziklub.hu",
+        "name": "Moziklub"
+      },
+      {
+        "id": "Moziverzum.hu",
+        "name": "Moziverzum"
+      },
+      {
+        "id": "Muzsika.TV.hu",
+        "name": "Muzsika TV"
+      },
+      {
+        "id": "National.Geographic.HD.hu",
+        "name": "National Geographic HD"
+      },
+      {
+        "id": "National.Geographic.Wild.HD.hu",
+        "name": "National Geographic Wild HD"
+      },
+      {
+        "id": "National.Geographic.Wild.hu",
+        "name": "National Geographic Wild"
+      },
+      {
+        "id": "National.Geographic.hu",
+        "name": "National Geographic"
+      },
+      {
+        "id": "Nautical.Channel.HD.hu",
+        "name": "Nautical Channel HD"
+      },
+      {
+        "id": "Nick.Jr..hu",
+        "name": "Nick Jr."
+      },
+      {
+        "id": "Nickelodeon.hu",
+        "name": "Nickelodeon"
+      },
+      {
+        "id": "Nickmusic.hu",
+        "name": "Nickmusic"
+      },
+      {
+        "id": "Nicktoons.hu",
+        "name": "Nicktoons"
+      },
+      {
+        "id": "ORF1.hu",
+        "name": "ORF1"
+      },
+      {
+        "id": "ORF2.hu",
+        "name": "ORF2"
+      },
+      {
+        "id": "OzoneTv.hu",
+        "name": "OzoneTv"
+      },
+      {
+        "id": "PRO.7.hu",
+        "name": "PRO 7"
+      },
+      {
+        "id": "Paramount.Network.hu",
+        "name": "Paramount Network"
+      },
+      {
+        "id": "Pax.TV.hu",
+        "name": "Pax TV"
+      },
+      {
+        "id": "Playboy.TV.hu",
+        "name": "Playboy TV"
+      },
+      {
+        "id": "Prime.hu",
+        "name": "Prime"
+      },
+      {
+        "id": "Private.TV.hu",
+        "name": "Private TV"
+      },
+      {
+        "id": "RTL.DE.hu",
+        "name": "RTL DE"
+      },
+      {
+        "id": "RTL.GOLD.hu",
+        "name": "RTL GOLD"
+      },
+      {
+        "id": "RTL.HÁROM.hu",
+        "name": "RTL HÁROM"
+      },
+      {
+        "id": "RTL.KETTŐ.hu",
+        "name": "RTL KETTŐ"
+      },
+      {
+        "id": "RTL.OTTHON.hu",
+        "name": "RTL OTTHON"
+      },
+      {
+        "id": "RTL.hu",
+        "name": "RTL"
+      },
+      {
+        "id": "RTL2.DE.hu",
+        "name": "RTL2 DE"
+      },
+      {
+        "id": "Rai.1.hu",
+        "name": "Rai 1"
+      },
+      {
+        "id": "Redlight.HD.hu",
+        "name": "Redlight HD"
+      },
+      {
+        "id": "SAT.1.hu",
+        "name": "SAT 1"
+      },
+      {
+        "id": "Sláger.TV.hu",
+        "name": "Sláger TV"
+      },
+      {
+        "id": "Smile.of.a.Child.hu",
+        "name": "Smile of a Child"
+      },
+      {
+        "id": "Sorozat+.hu",
+        "name": "Sorozat+"
+      },
+      {
+        "id": "SorozatKlub.hu",
+        "name": "SorozatKlub"
+      },
+      {
+        "id": "Spektrum.HD.hu",
+        "name": "Spektrum HD"
+      },
+      {
+        "id": "Spektrum.Home.hu",
+        "name": "Spektrum Home"
+      },
+      {
+        "id": "Spektrum.hu",
+        "name": "Spektrum"
+      },
+      {
+        "id": "Sport1.hu",
+        "name": "Sport1"
+      },
+      {
+        "id": "Sport2.hu",
+        "name": "Sport2"
+      },
+      {
+        "id": "Spíler1.TV.hu",
+        "name": "Spíler1 TV"
+      },
+      {
+        "id": "Spíler2.TV.hu",
+        "name": "Spíler2 TV"
+      },
+      {
+        "id": "Stingray.CMusic.hu",
+        "name": "Stingray CMusic"
+      },
+      {
+        "id": "Stingray.Classica.hu",
+        "name": "Stingray Classica"
+      },
+      {
+        "id": "Stingray.iConcerts.hu",
+        "name": "Stingray iConcerts"
+      },
+      {
+        "id": "Story4.hu",
+        "name": "Story4"
+      },
+      {
+        "id": "Super.Rtl.hu",
+        "name": "Super Rtl"
+      },
+      {
+        "id": "Super.TV2.hu",
+        "name": "Super TV2"
+      },
+      {
+        "id": "Superone.HD.hu",
+        "name": "Superone HD"
+      },
+      {
+        "id": "TLC.hu",
+        "name": "TLC"
+      },
+      {
+        "id": "TV.Paprika.hu",
+        "name": "TV Paprika"
+      },
+      {
+        "id": "TV2.Comedy.hu",
+        "name": "TV2 Comedy"
+      },
+      {
+        "id": "TV2.Kids.hu",
+        "name": "TV2 Kids"
+      },
+      {
+        "id": "TV2.Klub.hu",
+        "name": "TV2 Klub"
+      },
+      {
+        "id": "TV2.Séf.hu",
+        "name": "TV2 Séf"
+      },
+      {
+        "id": "TV2.hu",
+        "name": "TV2"
+      },
+      {
+        "id": "TV4.hu",
+        "name": "TV4"
+      },
+      {
+        "id": "TV5.hu",
+        "name": "TV5"
+      },
+      {
+        "id": "TVE.hu",
+        "name": "TVE"
+      },
+      {
+        "id": "TeenNick.hu",
+        "name": "TeenNick"
+      },
+      {
+        "id": "Telepaks.hu",
+        "name": "Telepaks"
+      },
+      {
+        "id": "The.History.HD.hu",
+        "name": "The History HD"
+      },
+      {
+        "id": "Tolnatáj.TV.hu",
+        "name": "Tolnatáj TV"
+      },
+      {
+        "id": "Travel.Channel.HD.hu",
+        "name": "Travel Channel HD"
+      },
+      {
+        "id": "TravelXP.hu",
+        "name": "TravelXP"
+      },
+      {
+        "id": "Viasat.2.hu",
+        "name": "Viasat 2"
+      },
+      {
+        "id": "Viasat.3.hu",
+        "name": "Viasat 3"
+      },
+      {
+        "id": "Viasat.6.hu",
+        "name": "Viasat 6"
+      },
+      {
+        "id": "Viasat.Explore.hu",
+        "name": "Viasat Explore"
+      },
+      {
+        "id": "Viasat.Film.hu",
+        "name": "Viasat Film"
+      },
+      {
+        "id": "Viasat.History.hu",
+        "name": "Viasat History"
+      },
+      {
+        "id": "Viasat.Nature.hu",
+        "name": "Viasat Nature"
+      },
+      {
+        "id": "Vox.hu",
+        "name": "Vox"
+      },
+      {
+        "id": "ZDF.hu",
+        "name": "ZDF"
+      },
+      {
+        "id": "Zeg.TV.hu",
+        "name": "Zeg TV"
+      },
+      {
+        "id": "Zenebutik.hu",
+        "name": "Zenebutik"
+      },
+      {
+        "id": "m1.HD.hu",
+        "name": "m1 HD"
+      },
+      {
+        "id": "m2.HD.hu",
+        "name": "m2 HD"
+      },
+      {
+        "id": "m4.hu",
+        "name": "m4"
+      },
+      {
+        "id": "m4sport+.hu",
+        "name": "m4sport+"
+      },
+      {
+        "id": "m5.hu",
+        "name": "m5"
+      }
+    ]
+  }
+}
