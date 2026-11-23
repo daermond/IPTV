@@ -13,6 +13,7 @@ const projects = new Map();
 const retainedDrafts = new Map();
 const publishedPlaylists = new Map();
 let site, project, projectId, baseProject, baseSha, token, dirty = false, busy = false;
+let tokenRemembered = false;
 let selectedGroup = null;
 let dragKey = null;
 let draggedGroup = null;
@@ -123,7 +124,42 @@ function apiPath(projectName = '') {
   return `/contents/projects${projectName ? `/${projectName}.json` : ''}`;
 }
 
-async function api(path, { method = 'GET', data, key = token, allowMissing = false } = {}) {
+function tokenStorageKey() {
+  return `iptv.github-token:${site.repo.toLowerCase()}`;
+}
+
+function restoreToken() {
+  try {
+    const saved = localStorage.getItem(tokenStorageKey());
+    if (saved?.startsWith('github_pat_')) {
+      token = saved;
+      tokenRemembered = true;
+    }
+  } catch {
+    // The editor still works with a token for this tab if storage is unavailable.
+  }
+}
+
+function setToken(value, remember = false) {
+  token = value;
+  tokenRemembered = false;
+  let success = true;
+  try {
+    if (value && remember) {
+      localStorage.setItem(tokenStorageKey(), value);
+      tokenRemembered = true;
+    } else {
+      localStorage.removeItem(tokenStorageKey());
+    }
+  } catch {
+    success = false;
+  }
+  updateControls();
+  return success;
+}
+
+async function api(path, options = {}) {
+  const { method = 'GET', data, key = token, allowMissing = false } = options;
   const response = await fetch(`https://api.github.com/repos/${site.repo}${path}`, {
     method, cache: 'no-store', signal: AbortSignal.timeout(15_000),
     headers: {
@@ -133,6 +169,11 @@ async function api(path, { method = 'GET', data, key = token, allowMissing = fal
     },
     body: data ? JSON.stringify(data) : undefined,
   });
+  if (response.status === 401 && key && key === token && options.key === undefined) {
+    setToken(undefined);
+    if (method === 'GET') return api(path, { key: null, allowMissing });
+    throw new Error('A GitHub-token már nem érvényes. Add meg az új tokent a GitHub gombnál.');
+  }
   if (response.status === 404 && allowMissing) return null;
   if (response.status === 409 || response.status === 422) throw new Error('Mentési ütközés. A GitHubon közben megváltozott a projekt, vagy a repó nem engedi ezt a mentést.');
   if (response.status === 401 || response.status === 403 || response.status === 404) {
@@ -166,18 +207,21 @@ function playlistUrl(id) {
   return new URL(`playlists/${id}.m3u`, document.baseURI);
 }
 
+function currentPlaylistUrl() {
+  return publishedPlaylists.has(projectId) ? playlistUrl(projectId).href : '';
+}
+
 function renderPublication() {
-  const output = byId('output');
-  const ready = publishedPlaylists.has(projectId);
-  const url = ready ? playlistUrl(projectId).href : '';
-  output.hidden = !ready;
-  (byId('open-output') ?? output).href = url;
+  const url = currentPlaylistUrl();
+  const addressRow = byId('playlist-address') ?? byId('output');
+  (byId('open-output') ?? byId('output')).href = url;
   if (outputUrl && outputUrl.value !== url) {
     outputUrl.value = url;
     copyFeedback.textContent = '';
   }
+  addressRow.hidden = !url;
   const date = Date.parse(publishedPlaylists.get(projectId));
-  byId('published').textContent = ready
+  byId('published').textContent = url
     ? (Number.isFinite(date)
       ? `Közzétéve: ${new Date(date).toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}`
       : 'Az M3U elérhető.')
@@ -212,8 +256,9 @@ function watchPublication() {
 }
 
 async function copyPlaylistUrl() {
-  const url = outputUrl.value;
+  const url = currentPlaylistUrl();
   if (!url) return;
+  outputUrl.value = url;
   try {
     await navigator.clipboard.writeText(url);
     if (outputUrl.value === url) copyFeedback.textContent = 'Az M3U-cím a vágólapra került.';
@@ -261,30 +306,41 @@ async function openProject(id) {
 }
 
 function connect(after) {
-  const key = input('password', '', { autocomplete: 'off', required: true, spellcheck: false });
+  const key = input('password', '', { autocomplete: 'off', required: !token, spellcheck: false });
+  const remember = input('checkbox', '', { checked: tokenRemembered });
   const github = node('a', {
     href: 'https://github.com/settings/personal-access-tokens/new',
     target: '_blank', rel: 'noopener', textContent: 'GitHub-token létrehozása ↗',
   });
   form('GitHub-hozzáférés', [
-    label('GitHub-token', key, `Válassz csak a(z) ${site.repo} repóra érvényes fine-grained tokent, Contents: Read and write joggal. A token az oldal bezárásáig marad meg.`),
+    label('GitHub-token', key, token
+      ? 'Új token megadásához töltsd ki. Üresen a jelenlegi token marad.'
+      : `Válassz csak a(z) ${site.repo} repóra érvényes fine-grained tokent, Contents: Read and write joggal.`),
+    node('div', {},
+      node('label', { className: 'check' }, remember, 'Jegyezze meg ezen a böngészőn'),
+      node('small', { className: 'muted', textContent: 'Csak saját eszközön kapcsold be.' })),
     github,
-    ...(token ? [button('Kapcsolat bontása', () => { token = undefined; updateControls(); dialog.close(); })] : []),
+    ...(token ? [button(tokenRemembered ? 'Kapcsolat bontása és token törlése' : 'Kapcsolat bontása', () => {
+      if (setToken(undefined)) notice('A GitHub-kapcsolat bontva.');
+      else notice('A kapcsolat bontva. A mentett token a böngésző webhelyadataiból törölhető.', 'error');
+      dialog.close();
+    })] : []),
   ], async () => {
-    const candidate = key.value.trim();
-    if (!candidate.startsWith('github_pat_')) throw new Error('Adj meg egy fine-grained GitHub-tokent.');
+    const candidate = key.value.trim() || token;
+    if (!candidate?.startsWith('github_pat_')) throw new Error('Adj meg egy fine-grained GitHub-tokent.');
     await api(`${apiPath()}?ref=${encodeURIComponent(site.branch)}`, { key: candidate });
-    token = candidate;
+    const changedStorage = setToken(candidate, remember.checked);
     key.value = '';
-    updateControls();
+    if (!changedStorage) notice('A böngésző nem engedi a token tárolásának módosítását.', 'error');
     if (after) setTimeout(after);
-  }, 'Kapcsolódás');
+  }, token ? 'Beállítás mentése' : 'Kapcsolódás');
 }
 
 async function save() {
   if (!dirty) return;
   if (!token) { connect(() => run(save)); return; }
   const current = await remoteProject(projectId, true);
+  if (!token) { connect(() => run(save)); return; }
   const expected = baseSha === undefined && current && baseProject
     && JSON.stringify(decode(current.content)) === JSON.stringify(baseProject) ? current.sha : baseSha;
   if (current ? (expected !== current.sha) : (baseProject !== null)) {
@@ -949,6 +1005,7 @@ async function initialize() {
   const response = await fetch('data/catalog.json', { cache: 'no-store', signal: AbortSignal.timeout(15_000) });
   if (!response.ok) throw new Error('A csatornakatalógus még nem érhető el. Ellenőrizd az Actions futását.');
   site = await response.json();
+  restoreToken();
   for (const entry of site.projects) {
     projects.set(entry.id, entry);
     publishedPlaylists.set(entry.id, site.generatedAt);
@@ -989,5 +1046,12 @@ byId('search').oninput = render;
 byId('visibility').onchange = render;
 byId('sort').onchange = () => { project.sort = byId('sort').value; edited(); render(); };
 window.addEventListener('beforeunload', event => { if (dirty || retainedDrafts.size) event.preventDefault(); });
+window.addEventListener('storage', event => {
+  if (site && tokenRemembered && (event.key === tokenStorageKey() || event.key === null) && event.newValue !== token) {
+    token = undefined;
+    tokenRemembered = false;
+    updateControls();
+  }
+});
 document.addEventListener('visibilitychange', watchPublication);
 run(initialize);

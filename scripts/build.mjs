@@ -1,5 +1,6 @@
 import { access, cp, mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import {
@@ -137,6 +138,23 @@ async function updateRepoPlaylists(playlists) {
   }
 }
 
+async function publishWebAssets() {
+  const [html, app, playlist, css] = await Promise.all(
+    ['index.html', 'app.js', 'playlist.js', 'style.css'].map(file => readFile(path('web', file), 'utf8')),
+  );
+  // Pages caches each resource separately. A new page has to request its matching assets.
+  const version = createHash('sha256').update(html).update(app).update(playlist).update(css).digest('hex').slice(0, 16);
+  for (const file of await readdir(path('web'))) {
+    if (file !== 'index.html' && file !== 'app.js') await cp(path('web', file), path('dist', file));
+  }
+  await Promise.all([
+    writeFile(path('dist', 'index.html'), html
+      .replace('href="style.css"', `href="style.css?v=${version}"`)
+      .replace('src="app.js"', `src="app.js?v=${version}"`)),
+    writeFile(path('dist', 'app.js'), app.replace("'./playlist.js'", `'./playlist.js?v=${version}'`)),
+  ]);
+}
+
 export async function build({ updateState = false, refreshEpg = false } = {}) {
   const sources = await readJson(path('sources.json'));
   if (!sourceList(sources.m3u) || !sourceList(sources.epg)) throw new Error('Érvénytelen forráslista.');
@@ -199,7 +217,7 @@ export async function build({ updateState = false, refreshEpg = false } = {}) {
   const logos = (await logoIndex(sources.logos, ids)) ?? await optionalJson(logoFile);
 
   await Promise.all(['data', 'playlists'].map(dir => mkdir(path('dist', dir), { recursive: true })));
-  for (const file of await readdir(path('web'))) await cp(path('web', file), path('dist', file));
+  await publishWebAssets();
   const playlists = new Map();
   for (const { id, project, epgSources } of projects) {
     const filename = `${id}.m3u`;
