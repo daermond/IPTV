@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "name": "Otthon",
+  "sources": ["iptv-org-hu"],
+  "epgSources": ["epgshare-hu"],
+  "sort": "manual",
+  "streamMode": "primary",
+  "groups": [],
+  "order": [],
+  "channels": {}
+}

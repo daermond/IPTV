@@ -1,0 +1,17 @@
+{
+  "m3u": [
+    {
+      "id": "iptv-org-hu",
+      "name": "iptv-org · Magyarország",
+      "url": "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/hu.m3u"
+    }
+  ],
+  "epg": [
+    {
+      "id": "epgshare-hu",
+      "name": "EPGShare · Magyarország",
+      "url": "https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz"
+    }
+  ],
+  "logos": "https://iptv-org.github.io/api/logos.json"
+}

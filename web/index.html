@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https:; connect-src 'self' https:; object-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>IPTV · Csatornaszerkesztő</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand"><span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>IPTV</strong></div>
+    <div class="project-controls">
+      <label for="project">Projekt</label>
+      <select id="project" disabled></select>
+      <button id="new-project" type="button" disabled>Új projekt</button>
+    </div>
+    <div class="header-actions">
+      <button id="connection" type="button" disabled>GitHub</button>
+      <button id="save" class="primary" type="button" disabled>Mentés</button>
+    </div>
+  </header>
+  <main>
+    <div id="status" class="status" role="status">A csatornalista betöltése…</div>
+    <div id="editor" class="workspace" hidden>
+      <aside class="sidebar">
+        <div class="section-line"><h2>Csoportok</h2><button id="add-group" class="square" type="button" aria-label="Új csoport" title="Új csoport">+</button></div>
+        <nav id="groups" aria-label="Csatornacsoportok"></nav>
+        <div class="side-tools">
+          <button id="epg-suggestions" type="button">EPG-javaslatok</button>
+          <button id="settings" type="button">Projektbeállítások</button>
+          <a id="log-link" target="_blank" rel="noopener">Csatornaváltozások ↗</a>
+        </div>
+      </aside>
+      <section class="content" aria-labelledby="title">
+        <div class="headline">
+          <div><h1 id="title">Csatornák</h1><p id="stats" class="muted"></p></div>
+          <a id="output" class="m3u" target="_blank" rel="noopener">Kész M3U ↗</a>
+        </div>
+        <div class="toolbar">
+          <input id="search" type="search" aria-label="Csatorna keresése" placeholder="Csatorna keresése…">
+          <select id="visibility" aria-label="Csatornaállapot">
+            <option value="all">Minden állapot</option><option value="on">Bekapcsolva</option>
+            <option value="off">Kikapcsolva</option><option value="missing">Hiányzik a forrásból</option>
+          </select>
+          <label class="sort">Sorrend <select id="sort"><option value="manual">Kézi</option><option value="number">Csatornaszám szerint</option></select></label>
+        </div>
+        <div class="table-shell">
+          <table>
+            <thead><tr><th scope="col" class="drag-col"><span class="sr-only">Sorrend</span></th><th scope="col">Csatorna</th><th scope="col">Szám</th><th scope="col">Csoport</th><th scope="col">EPG</th><th scope="col">Stream</th><th scope="col">Aktív</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <p id="empty" class="empty" hidden>Nincs találat.</p>
+        </div>
+        <p id="warning" class="warning" hidden></p>
+        <p id="published" class="published"></p>
+      </section>
+    </div>
+  </main>
+  <dialog id="dialog"><div id="dialog-content"></div></dialog>
+</body>
+</html>
