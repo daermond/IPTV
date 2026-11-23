@@ -7,6 +7,8 @@ Magyar IPTV-listák szerkesztése és frissítése GitHubon. A [webszerkesztő](
 3. **Mentéskor** adj meg egy [fine-grained GitHub-tokent](https://github.com/settings/personal-access-tokens/new), amely csak erre a repóra kap **Contents: Read and write** jogosultságot. A token az oldal memóriájában marad. A mentés azonnal új futást indít, a kész M3U a sikeres közzététel után frissül.
 4. Add meg a kész M3U-címet a lejátszóban. Ha a lejátszó nem olvassa az EPG-címet a fejlécből, add hozzá külön a [magyar EPGShare URL-jét](https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz) a lejátszó EPG-beállításaiban.
 
+A **Projekt másolása** gomb az aktív projekt aktuális beállításaiból készít egy önálló projektet. Adj neki új nevet, majd kattints a **Mentés** gombra. A másolat saját projektfájlt és saját M3U-listát kap. Az eredeti projekt nem mentett módosításai a megnyitott lapon megmaradnak.
+
 A csoportokat a bal oldali fogantyúval vagy a fel és le nyíllal rendezheted. A **Csoportsorrend alkalmazása** gomb egyszer rendezi át a teljes listát, megtartva a csatornák csoporton belüli kézi sorrendjét. Az **Unassigned** a végére kerül. Ezután mentsd a projektet.
 
 A **Saját csatorna** gombbal forráson kívüli csatornát vehetsz fel névvel és közvetlen streamcímmel. Csoportot, csatornaszámot, logót és EPG-t ugyanúgy adhatsz hozzá, mint az importált csatornákhoz. A saját csatorna adatlapján a streamcím is szerkeszthető, és a csatorna eltávolítható. A változásnapló továbbra is a külső M3U-források csatornáit követi.

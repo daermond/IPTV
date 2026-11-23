@@ -46,7 +46,7 @@ a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3
 .signal i:nth-child(2) { height: 10px; }
 .signal i:nth-child(3) { height: 15px; }
 .signal i:nth-child(4) { height: 20px; }
-.project-controls, .header-actions { display: flex; align-items: center; gap: 8px; }
+.project-controls, .project-actions, .header-actions { display: flex; align-items: center; gap: 8px; }
 .project-controls label { color: #c3d4ec; font-size: 13px; }
 .masthead button, .masthead select { color: white; border-color: #567199; background: #213859; }
 .masthead button:hover { background: #314d76; }
@@ -153,8 +153,8 @@ legend { padding-inline: 5px; font-weight: 650; }
   .side-tools { display: flex; align-items: center; flex-wrap: wrap; margin: 10px 0; }
 }
 @media (max-width: 525px) {
-  .project-controls { order: 3; width: 100%; }
-  .project-controls select { flex: 1; min-width: 0; }
+  .project-controls { display: grid; grid-template-columns: auto minmax(0, 1fr); order: 3; width: 100%; }
+  .project-actions { grid-column: 1 / -1; flex-wrap: wrap; }
   .sidebar .section-line { margin-top: 0; }
   .sort { margin-left: 0; }
   .toolbar input { flex-basis: 100%; }

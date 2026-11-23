@@ -6,7 +6,9 @@ const byId = id => document.getElementById(id);
 const dialog = byId('dialog');
 const rows = byId('rows');
 const picker = byId('project');
+const copyProjectButton = byId('copy-project');
 const projects = new Map();
+const retainedDrafts = new Map();
 let site, project, projectId, baseProject, baseSha, token, dirty = false, busy = false;
 let selectedGroup = null;
 let dragKey = null;
@@ -53,6 +55,7 @@ function updateControls() {
   byId('save').disabled = !project || !dirty || busy;
   picker.disabled = !site || busy;
   byId('new-project').disabled = !site || busy;
+  if (copyProjectButton) copyProjectButton.disabled = !project || busy;
   byId('connection').disabled = !site || busy;
   byId('connection').textContent = token ? 'GitHub ✓' : 'GitHub';
   byId('editor').inert = busy;
@@ -155,24 +158,37 @@ function updatePicker() {
   picker.value = projectId;
 }
 
-async function openProject(id) {
-  const entry = projects.get(id);
-  let latest;
-  try { latest = await remoteProject(id); }
-  catch (error) { if (!entry.project) throw error; }
-  project = latest ? decode(latest.content) : structuredClone(entry.project);
+function activateProject(id, { value, baseline, sha, modified = false }, message = '') {
   projectId = id;
-  baseProject = structuredClone(project);
-  baseSha = latest?.sha;
-  dirty = false;
+  project = value;
+  baseProject = baseline;
+  baseSha = sha;
+  dirty = modified;
   selectedGroup = null;
   expandedEpg = null;
   byId('search').value = '';
   byId('visibility').value = 'all';
   byId('editor').hidden = false;
   updatePicker();
-  notice(latest ? '' : 'A legutóbb közzétett projektet látod. Mentéskor ellenőrizzük a GitHubon tárolt változatot.');
+  notice(message);
+  updateControls();
   render();
+}
+
+async function openProject(id) {
+  const draft = retainedDrafts.get(id);
+  if (draft) {
+    retainedDrafts.delete(id);
+    activateProject(id, draft, 'Nem mentett módosítások.');
+    return;
+  }
+  const entry = projects.get(id);
+  let latest;
+  try { latest = await remoteProject(id); }
+  catch (error) { if (!entry.project) throw error; }
+  const value = latest ? decode(latest.content) : structuredClone(entry.project);
+  activateProject(id, { value, baseline: structuredClone(value), sha: latest?.sha },
+    latest ? '' : 'A legutóbb közzétett projektet látod. Mentéskor ellenőrizzük a GitHubon tárolt változatot.');
 }
 
 function connect(after) {
@@ -218,32 +234,40 @@ async function save() {
   render();
 }
 
-function newProject() {
-  if (dirty && !confirm('Eldobod a nem mentett módosításokat?')) return;
-  const name = input('text', '', { required: true, maxLength: 80 });
-  form('Új projekt', [label('Projektnév', name)], () => {
+function suggestedCopyName() {
+  const base = project.name.trim().slice(0, 50).trimEnd();
+  const first = `${base} másolat`;
+  let name = first;
+  for (let number = 2; projects.has(slug(name)); number += 1) name = `${first} ${number}`;
+  return name;
+}
+
+function projectDialog(copy) {
+  if (!copy && dirty && !confirm('Eldobod a nem mentett módosításokat?')) return;
+  const title = copy ? 'Projekt másolása' : 'Új projekt';
+  const name = input('text', copy ? suggestedCopyName() : '', { required: true, maxLength: 80 });
+  form(title, [label('Projektnév', name,
+    copy ? 'A másolat a jelenleg látható beállításokkal indul, és önállóan szerkeszthető.' : undefined)], () => {
     const cleanName = name.value.trim();
     const id = slug(cleanName);
     if (!validText(cleanName) || !ID.test(id)) throw new Error('Adj meg egy betűt vagy számot tartalmazó nevet.');
     if (projects.has(id)) throw new Error('Már van ilyen nevű projekt.');
-    if (baseProject === null) projects.delete(projectId);
-    projectId = id;
-    project = {
+    const value = copy ? { ...structuredClone(project), name: cleanName } : {
       version: 1, name: cleanName, sources: [site.sources.m3u[0].id],
       epgSources: site.sources.epg.slice(0, 1).map(source => source.id),
       sort: 'manual', streamMode: 'primary', groups: [], order: [], channels: {},
     };
+    // Opening the copy must not discard the edits that were in progress in its source.
+    if (copy && dirty) {
+      retainedDrafts.set(projectId, { value: project, baseline: baseProject, sha: baseSha, modified: true });
+    } else if (baseProject === null) {
+      projects.delete(projectId);
+    }
     projects.set(id, { name: cleanName });
-    baseProject = null;
-    baseSha = null;
-    selectedGroup = null;
-    expandedEpg = null;
-    byId('search').value = '';
-    byId('visibility').value = 'all';
-    edited();
-    updatePicker();
-    render();
-  }, 'Létrehozás');
+    activateProject(id, { value, baseline: null, sha: null, modified: true },
+      copy ? 'A másolat készen áll. A Mentés gomb külön projektfájlt hoz létre.' : 'Nem mentett módosítások.');
+  }, copy ? 'Másolás' : 'Létrehozás');
+  name.select();
 }
 
 function editGroup(group) {
@@ -883,7 +907,8 @@ picker.onchange = () => {
   });
 };
 byId('connection').onclick = () => connect();
-byId('new-project').onclick = newProject;
+byId('new-project').onclick = () => projectDialog(false);
+copyProjectButton?.addEventListener('click', () => projectDialog(true));
 byId('save').onclick = () => run(save);
 byId('settings').onclick = settings;
 byId('epg-suggestions').onclick = suggestEpg;
@@ -893,5 +918,5 @@ byId('add-channel').onclick = addManualChannel;
 byId('search').oninput = render;
 byId('visibility').onchange = render;
 byId('sort').onchange = () => { project.sort = byId('sort').value; edited(); render(); };
-window.addEventListener('beforeunload', event => { if (dirty) event.preventDefault(); });
+window.addEventListener('beforeunload', event => { if (dirty || retainedDrafts.size) event.preventDefault(); });
 run(initialize);
