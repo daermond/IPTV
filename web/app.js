@@ -1,5 +1,5 @@
 import {
-  has, httpsUrl, ID, manualChannelKey, manualStreamUrl, orderByGroups, projectChannels, streamKey, UNASSIGNED,
+  has, httpsUrl, ID, manualChannelKey, manualStreamUrl, orderByGroups, parsePlaylist, projectChannels, streamKey, UNASSIGNED,
 } from './playlist.js';
 
 const byId = id => document.getElementById(id);
@@ -12,6 +12,7 @@ const copyFeedback = byId('copy-feedback');
 const projects = new Map();
 const retainedDrafts = new Map();
 const publishedPlaylists = new Map();
+const loadingM3u = new Set();
 let site, project, projectId, baseProject, baseSha, token, dirty = false, busy = false;
 let tokenRemembered = false;
 let selectedGroup = null;
@@ -211,6 +212,38 @@ function currentPlaylistUrl() {
   return publishedPlaylists.has(projectId) ? playlistUrl(projectId).href : '';
 }
 
+const missingM3uSources = () => project.sources.filter(id => !has(site.catalog, id));
+
+function renderSourceStatus() {
+  const status = byId('source-status');
+  if (!status) return;
+  const missing = missingM3uSources();
+  status.hidden = !missing.length;
+  status.textContent = missing.some(id => loadingM3u.has(id))
+    ? 'Az M3U-forrás betöltése…'
+    : 'A forrás csatornái a sikeres GitHub-közzététel után jelennek meg.';
+}
+
+async function previewCustomM3u() {
+  const source = project.customM3u;
+  if (!source || !project.sources.includes(source.id) || baseProject?.sources.includes(source.id) ||
+    has(site.catalog, source.id) || loadingM3u.has(source.id)) return;
+  loadingM3u.add(source.id);
+  renderSourceStatus();
+  try {
+    const response = await fetch(source.url, { credentials: 'omit', signal: AbortSignal.timeout(8000) });
+    const limit = 16 * 1024 * 1024;
+    if (!response.ok || !httpsUrl(response.url) || Number(response.headers.get('content-length')) > limit) return;
+    const data = await response.text();
+    if (data.length <= limit && !has(site.catalog, source.id)) site.catalog[source.id] = parsePlaylist(data);
+  } catch {
+    // Some hosts only allow the source to be downloaded by GitHub Actions.
+  } finally {
+    loadingM3u.delete(source.id);
+    if (project.sources.includes(source.id)) render();
+  }
+}
+
 function renderPublication() {
   const url = currentPlaylistUrl();
   const addressRow = byId('playlist-address') ?? byId('output');
@@ -234,23 +267,41 @@ function watchPublication() {
   clearTimeout(publicationTimer);
   const checkId = ++publicationCheck;
   const id = projectId;
-  if (!id || baseProject === null || publishedPlaylists.has(id) || document.hidden) return;
+  if (!id || baseProject === null || document.hidden) return;
+  const missingSavedSources = () => missingM3uSources().filter(source => baseProject.sources.includes(source));
+  const waiting = () => !publishedPlaylists.has(id) || missingSavedSources().length > 0;
+  if (!waiting()) return;
 
   async function check() {
-    const url = playlistUrl(id);
-    url.searchParams.set('check', Date.now());
+    const missing = missingSavedSources();
+    const url = missing.length ? new URL('data/catalog.json', document.baseURI) : playlistUrl(id);
+    url.searchParams.set('check', String(Date.now()));
     try {
-      const response = await fetch(url, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(5000) });
+      const response = await fetch(url, {
+        method: missing.length ? 'GET' : 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(5000),
+      });
       if (checkId !== publicationCheck) return;
-      if (response.ok && !response.headers.get('content-type')?.startsWith('text/html')) {
+      if (response.ok && missing.length) {
+        const latest = await response.json();
+        if (checkId !== publicationCheck) return;
+        const loaded = missing.filter(source => has(latest.catalog, source));
+        if (loaded.length) {
+          for (const source of loaded) site.catalog[source] = latest.catalog[source];
+          Object.assign(site.logos, latest.logos);
+          render();
+        }
+        if (latest.projects.some(entry => entry.id === id)) {
+          publishedPlaylists.set(id, latest.generatedAt);
+          renderPublication();
+        }
+      } else if (response.ok && !response.headers.get('content-type')?.startsWith('text/html')) {
         publishedPlaylists.set(id, response.headers.get('last-modified'));
         renderPublication();
-        return;
       }
     } catch {
       // Keep checking while the project is open, including after a transient network error.
     }
-    if (checkId === publicationCheck && !document.hidden) publicationTimer = setTimeout(check, 10000);
+    if (checkId === publicationCheck && !document.hidden && waiting()) publicationTimer = setTimeout(check, 10000);
   }
   void check();
 }
@@ -287,6 +338,7 @@ function activateProject(id, { value, baseline, sha, modified = false }, message
   render();
   renderPublication();
   watchPublication();
+  void previewCustomM3u();
 }
 
 async function openProject(id) {
@@ -369,18 +421,40 @@ function suggestedCopyName() {
   return name;
 }
 
+function customM3uSource(value, previous) {
+  const address = value.trim();
+  if (!address) return undefined;
+  if (!httpsUrl(address)) throw new Error('Adj meg egy közvetlen, nyilvános HTTPS M3U-címet.');
+  const url = new URL(address);
+  // GitHub file pages serve HTML. The Raw address serves the playlist itself.
+  const githubFile = /^\/([^/]+\/[^/]+)\/blob\/(.+)$/u.exec(url.pathname);
+  if (url.hostname === 'github.com' && githubFile) {
+    url.hostname = 'raw.githubusercontent.com';
+    url.pathname = `/${githubFile[1]}/${githubFile[2]}`;
+  }
+  url.hash = '';
+  return previous?.url === url.href ? previous : {
+    id: `m3u-${crypto.randomUUID()}`, name: url.hostname, url: url.href,
+  };
+}
+
 function projectDialog(copy) {
   if (!copy && dirty && !confirm('Eldobod a nem mentett módosításokat?')) return;
   const title = copy ? 'Projekt másolása' : 'Új projekt';
   const name = input('text', copy ? suggestedCopyName() : '', { required: true, maxLength: 80 });
+  const m3u = input('url', '', { placeholder: 'https://…/lista.m3u', spellcheck: false });
   form(title, [label('Projektnév', name,
-    copy ? 'A másolat a jelenleg látható beállításokkal indul, és önállóan szerkeszthető.' : undefined)], () => {
+    copy ? 'A másolat a jelenleg látható beállításokkal indul, és önállóan szerkeszthető.' : undefined),
+  ...(copy ? [] : [label('M3U-forrás URL-je', m3u,
+    'Nyilvános HTTPS-cím. Üresen az iptv-org magyar listáját használja.')])], () => {
     const cleanName = name.value.trim();
     const id = slug(cleanName);
     if (!validText(cleanName) || !ID.test(id)) throw new Error('Adj meg egy betűt vagy számot tartalmazó nevet.');
     if (projects.has(id)) throw new Error('Már van ilyen nevű projekt.');
+    const customM3u = copy ? undefined : customM3uSource(m3u.value);
     const value = copy ? { ...structuredClone(project), name: cleanName } : {
-      version: 1, name: cleanName, sources: [site.sources.m3u[0].id],
+      version: 1, name: cleanName, sources: [customM3u?.id ?? site.sources.m3u[0].id],
+      ...(customM3u ? { customM3u } : {}),
       epgSources: site.sources.epg.slice(0, 1).map(source => source.id),
       sort: 'manual', streamMode: 'primary', groups: [], order: [], channels: {},
     };
@@ -767,11 +841,13 @@ function settings() {
   const guides = node('fieldset', {}, node('legend', { textContent: 'Külső EPG-források' }));
   const sourceChecks = new Map(), epgChecks = new Map();
   const customs = [...(project.customEpg ?? [])];
+  const m3u = input('url', project.customM3u?.url ?? '', { placeholder: 'https://…/lista.m3u', spellcheck: false });
   for (const source of site.sources.m3u) {
     const check = input('checkbox', '', { checked: project.sources.includes(source.id) });
     sourceChecks.set(source.id, check);
     sources.append(node('label', { className: 'check' }, check, source.name));
   }
+  sources.append(label('Saját M3U-forrás URL-je', m3u, 'A mezőben megadott lista ehhez a projekthez tartozik.'));
   const addEpg = (source, checked) => {
     const check = input('checkbox', '', { checked, title: source.url });
     epgChecks.set(source.id, check);
@@ -814,19 +890,26 @@ function settings() {
     node('small', { className: 'muted', textContent: 'A lejátszó a műsorújságot közvetlenül ezekről a címekről tölti le. Egyes lejátszókban a címeket külön kell megadni.' }),
     actions,
   ], () => {
-    if (!checked(sourceChecks).length) throw new Error('Válassz legalább egy M3U-forrást.');
+    const customM3u = customM3uSource(m3u.value, project.customM3u);
+    const selectedSources = checked(sourceChecks);
+    if (customM3u) selectedSources.unshift(customM3u.id);
+    if (!selectedSources.length) throw new Error('Válassz vagy adj meg legalább egy M3U-forrást.');
     if (epgName.value || epgUrl.value) throw new Error('A megadott EPG-címhez használd a hozzáadás gombot.');
     const chosen = checked(epgChecks);
     if (assignments().some(channel => !chosen.includes(channel.epg.source))) {
       throw new Error('Egy csatorna még ehhez az EPG-hez van rendelve. Előbb módosítsd a hozzárendelését.');
     }
-    project.sources = checked(sourceChecks);
+    project.sources = selectedSources;
+    if (customM3u) project.customM3u = customM3u;
+    else delete project.customM3u;
     project.epgSources = chosen;
     if (customs.length) project.customEpg = customs;
     project.streamMode = mode.value;
     expandedEpg = null;
     edited();
     render();
+    watchPublication();
+    void previewCustomM3u();
   });
 }
 
@@ -860,6 +943,7 @@ function logoFor(channel) {
 }
 
 function render() {
+  renderSourceStatus();
   const focused = document.activeElement;
   const focusedRow = focused.closest('tr[data-channel-key]');
   const channels = allChannels();

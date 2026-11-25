@@ -2,12 +2,14 @@
 
 Magyar IPTV-listák szerkesztése és frissítése GitHubon. A [webszerkesztő](https://daermond.github.io/IPTV/) projektjei a `projects/` mappában vannak. Az alapértelmezett lista az [Otthon M3U](https://daermond.github.io/IPTV/playlists/otthon.m3u). A kész listák másolata a repó [playlists mappájában](https://github.com/daermond/IPTV/tree/main/playlists) is elérhető.
 
-1. Nyisd meg a szerkesztőt, válassz projektet, vagy hozz létre újat.
+1. Nyisd meg a szerkesztőt, válassz projektet, vagy kattints az **Új projekt** gombra. Az új projekt **M3U-forrás URL-je** mezőjébe nyilvános HTTPS-címet adhatsz meg. Ekkor a projekt ezt a listát használja. Üres mezőnél az iptv-org magyar listája marad az alapértelmezett.
 2. A csatornaszámot és a csoportot közvetlenül a sorban módosíthatod. Az **EPG** oszlopban a **Párosítás** gomb a sor alatt nyitja meg a hozzárendelést. A csatorna nevére kattintva a neve, logója és elsődleges streamje is szerkeszthető. Az **Aktív** jelölővel kapcsolhatod ki. Kézi sorrendben húzd a sort a fogantyúval, vagy használd a fel és le nyilat.
 3. **Mentéskor** adj meg egy [fine-grained GitHub-tokent](https://github.com/settings/personal-access-tokens/new), amely csak erre a repóra kap **Contents: Read and write** jogosultságot. A **Jegyezze meg ezen a böngészőn** opcióval a token a következő megnyitáskor is elérhető. Ezt saját eszközön kapcsold be. A **GitHub → Kapcsolat bontása és token törlése** gomb törli az eltárolt tokent. A mentés azonnal új futást indít, a kész M3U a sikeres közzététel után frissül.
 4. A projekt fejlécében a **Kész M3U** melletti **Másolás** gombbal másold ki a címet a lejátszóhoz. Az első közzététel után a cím magától megjelenik a nyitva lévő szerkesztőben. Ha a lejátszó nem olvassa az EPG-címet a fejlécből, add hozzá külön a [magyar EPGShare URL-jét](https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz) a lejátszó EPG-beállításaiban.
 
 A **Projekt másolása** gomb az aktív projekt aktuális beállításaiból készít egy önálló projektet. Adj neki új nevet, majd kattints a **Mentés** gombra. A másolat saját projektfájlt és saját M3U-listát kap. Az eredeti projekt nem mentett módosításai a megnyitott lapon megmaradnak.
+
+A saját M3U-cím a **Projektbeállításokban** később is megadható vagy cserélhető. Ha a böngésző nem tudja közvetlenül letölteni a listát, mentsd a projektet. A csatornák a sikeres GitHub-közzététel után automatikusan megjelennek.
 
 A csoportokat a bal oldali fogantyúval vagy a fel és le nyíllal rendezheted. A **Csoportsorrend alkalmazása** gomb egyszer rendezi át a teljes listát, megtartva a csatornák csoporton belüli kézi sorrendjét. Az **Unassigned** a végére kerül. Ezután mentsd a projektet.
 

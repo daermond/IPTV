@@ -36,7 +36,11 @@ export function validateProject(project, sources) {
   const idsFrom = (list, allowed) => Array.isArray(list)
     && unique(list) && list.every(id => allowed.some(source => source.id === id));
   require(object(project) && project.version === 1 && text(project.name), 'version / name');
-  require(idsFrom(project.sources, sources.m3u) && project.sources.length, 'sources');
+  const customM3u = project.customM3u;
+  require(customM3u === undefined ||
+    (sourceList([customM3u]) && !sources.m3u.some(source => source.id === customM3u.id)), 'customM3u');
+  const m3u = customM3u ? [...sources.m3u, customM3u] : sources.m3u;
+  require(idsFrom(project.sources, m3u) && project.sources.length, 'sources');
   const custom = project.customEpg ?? [];
   require(sourceList(custom), 'customEpg');
   const epg = [...sources.epg, ...custom];
@@ -169,10 +173,21 @@ export async function build({ updateState = false, refreshEpg = false } = {}) {
   }
   if (projects.length === 0) throw new Error('Legalább egy projekt szükséges.');
 
-  const streamed = await Promise.all(sources.m3u.map(async source => {
+  const m3uSources = new Map(sources.m3u.map(source => [source.id, source]));
+  for (const { id, project } of projects) {
+    const source = project.customM3u;
+    if (!source || !project.sources.includes(source.id)) continue;
+    const existing = m3uSources.get(source.id);
+    if (existing && existing.url !== source.url) throw new Error(`Eltérő M3U-forrás ugyanazzal az azonosítóval: ${id}`);
+    m3uSources.set(source.id, source);
+  }
+  const downloads = new Map();
+  const streamed = await Promise.all([...m3uSources.values()].map(async source => {
     try {
-      const input = await download(source.url, 16 * 1024 * 1024);
-      return [source.id, parsePlaylist(input.toString('utf8'))];
+      if (!downloads.has(source.url)) {
+        downloads.set(source.url, download(source.url, 16 * 1024 * 1024).then(input => parsePlaylist(input.toString('utf8'))));
+      }
+      return [source.id, await downloads.get(source.url)];
     } catch (error) {
       throw new Error(`${source.name}: ${error.message}`, { cause: error });
     }
@@ -182,7 +197,7 @@ export async function build({ updateState = false, refreshEpg = false } = {}) {
   const state = await optionalJson(stateFile);
   const events = [];
   const timestamp = new Date().toISOString().slice(0, 10);
-  for (const source of sources.m3u) {
+  for (const source of m3uSources.values()) {
     const current = Object.fromEntries(catalog[source.id].map(stream => [
       channelKey(stream, source.id), stream.name || stream.attributes['tvg-id'] || stream.url,
     ]));

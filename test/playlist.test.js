@@ -112,6 +112,19 @@ test('exports project-only channels with the same metadata and controls as impor
   assert.throws(() => validateProject({ ...project, manualChannels: [{ ...channel, url: channel.url + '\n#EXTINF:0' }] }, sources), /manualChannels/u);
 });
 
+test('uses the custom M3U only for the project that selects it', () => {
+  const customM3u = { id: 'independent-source', name: 'Saját lista', url: 'https://example.org/custom.m3u' };
+  const custom = { ...config, name: 'Egyéni', sources: [customM3u.id], customM3u };
+  const stream = 'https://example.org/custom-channel.m3u8';
+  const catalog = { hu: first, [customM3u.id]: parsePlaylist(`#EXTM3U\n#EXTINF:-1,Saját csatorna\n${stream}\n`) };
+  const output = renderPlaylist(custom, catalog, {}, validateProject(custom, sources));
+  assert.deepEqual(parsePlaylist(output).map(item => item.url), [stream]);
+  const defaultOutput = renderPlaylist(config, catalog, {}, validateProject(config, sources));
+  assert.ok(!defaultOutput.includes(stream));
+  assert.throws(() => validateProject({ ...custom, customM3u: { ...customM3u, url: 'file:///playlist.m3u' } }, sources), /customM3u/u);
+  assert.throws(() => validateProject({ ...custom, sources: ['hu'], customM3u: { ...customM3u, id: 'hu' } }, sources), /customM3u/u);
+});
+
 test('membership changes log only additions and removals after the first successful snapshot', () => {
   const before = { 'id:ATV.hu@SD': 'ATV', 'id:M4Sport.hu@SD': 'M4 Sport' };
   assert.deepEqual(membershipChanges(undefined, before), []);

@@ -91,6 +91,7 @@ h1 { font-size: clamp(28px, 4vw, 43px); line-height: 1.05; letter-spacing: -.055
 .playlist-output button { color: var(--blue); }
 .copy-feedback { grid-column: 2 / -1; margin: 0; font-size: 13px; color: var(--muted); }
 .copy-feedback:empty { position: absolute; }
+.source-status { margin: 0 0 12px; font-size: 14px; }
 .toolbar { margin-bottom: 11px; flex-wrap: wrap; }
 .toolbar input { flex: 1; min-width: 140px; }
 .sort { display: flex; align-items: center; gap: 7px; margin-left: auto; color: var(--muted); }
@@ -147,6 +148,7 @@ dialog::backdrop { background: #15283e8a; }
 .dialog-actions { margin-top: 17px; display: flex; gap: 8px; flex-wrap: wrap; }
 .two-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 fieldset { margin: 0; border: 1px solid var(--line); border-radius: 6px; padding: 10px; min-width: 0; }
+fieldset > .field { margin-top: 8px; }
 legend { padding-inline: 5px; font-weight: 650; }
 .check { display: flex; align-items: center; gap: 8px; }
 .suggestions { max-height: 36vh; overflow: auto; display: grid; gap: 3px; }
